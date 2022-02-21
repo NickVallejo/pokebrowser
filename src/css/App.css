@@ -1,0 +1,476 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+* {
+  font-family: "Press Start 2P", cursive;
+  color: #555555;
+}
+
+body {
+  background-image: url("../assets/img/pokebg.png");
+  background-size: cover;
+}
+
+.pb-god {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 90vh;
+}
+
+.field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+
+.patch {
+  margin: 5px;
+  background-color: lightgreen;
+  -webkit-transition: 0.55s ease;
+  transition: 0.55s ease;
+  background-size: 80px;
+  border-radius: 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.patch:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  background-color: #4ee44e;
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.player {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.player-bubble {
+  position: absolute;
+  opacity: 0;
+}
+
+.pkball {
+  max-width: 35px;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.fizzle-true {
+  opacity: 0;
+}
+
+.enc-menu,
+.enc-engage,
+.trypoke-menu {
+  height: 300px;
+}
+
+.enc-screen {
+  width: 100%;
+  height: 100%;
+  background: #000000bd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+}
+
+.enc-screen .enc-screen__wrap {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.enc-screen .encpoke-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 200px;
+  height: 140px;
+  margin: 0 auto;
+}
+
+.enc-screen .encpoke-box .encpoke-sprite {
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
+}
+
+.enc-screen .encpoke-box .encpoke-name {
+  color: white;
+  margin-bottom: 0px;
+  margin-top: 15px;
+}
+
+.enc-screen .enc-menu {
+  opacity: 0;
+  text-align: center;
+}
+
+.enc-screen .enc-menu .enc-menu__balls {
+  color: white;
+}
+
+.enc-screen .enc-menu .enc-menu__noengage {
+  color: white;
+}
+
+.enc-screen .enc-menu .enc-menu__options {
+  height: 75px;
+}
+
+.enc-screen .enc-menu .ball-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 350px;
+  margin: 15px auto;
+}
+
+.enc-screen .enc-menu .ball-menu .ball h3,
+.enc-screen .enc-menu .ball-menu .ball span {
+  color: white;
+  display: block;
+  width: 100%;
+  margin: 15px 0px;
+}
+
+.enc-screen .enc-menu .ball-menu .ball img {
+  max-width: 50px;
+}
+
+.enc-screen .enc-engage {
+  width: 100%;
+  position: relative;
+}
+
+.enc-screen .enc-engage .enc-slider {
+  background-color: rgba(255, 255, 255, 0.35);
+  position: relative;
+  height: 75px;
+  max-width: 1150px;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 0 5px 1px #fff;
+          box-shadow: 0 0 5px 1px #fff;
+}
+
+.enc-screen .enc-engage .enc-slider .enc-target,
+.enc-screen .enc-engage .enc-slider .enc-pounder {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  left: calc(50% - 50px);
+  top: -25px;
+  border-radius: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.enc-screen .enc-engage .enc-slider .enc-pounder {
+  background: rgba(255, 255, 255, 0.288);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  left: calc(0%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 0 7px 1px #fff;
+          box-shadow: 0 0 7px 1px #fff;
+}
+
+.enc-screen .enc-engage .enc-slider .enc-pounder .enc-pounder-ring {
+  border: 3px solid rgba(50, 176, 226, 0.6);
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+}
+
+.enc-screen .enc-engage .enc-slider .enc-target {
+  background-image: url("../assets/img/slider-target.png");
+}
+
+.enc-screen .enc-engage .tap-value {
+  position: absolute;
+  -webkit-transition: 1.3s;
+  transition: 1.3s;
+  right: 650px;
+  top: 0;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+  font-size: 65px;
+}
+
+.enc-screen .enc-engage .tap-value__perfect {
+  color: darkturquoise;
+}
+
+.enc-screen .enc-engage .tap-value__great {
+  color: greenyellow;
+}
+
+.enc-screen .enc-engage .tap-value__ok {
+  color: gold;
+}
+
+.enc-screen .enc-engage .tap-value__miss {
+  color: red;
+}
+
+.enc-screen .enc-engage .tap-value__fly {
+  top: -100px;
+  right: 550px;
+  opacity: 0;
+  -webkit-transform: rotate(40deg);
+          transform: rotate(40deg);
+}
+
+.enc-screen .trypoke-menu {
+  text-align: center;
+  position: relative;
+}
+
+.enc-screen .trypoke-menu .trypoke-title {
+  color: white;
+  font-size: 24px;
+}
+
+.enc-screen .trypoke-menu .trypoke-catch {
+  color: white;
+  margin-top: 10px;
+}
+
+.enc-screen .trypoke-menu .status-pending {
+  color: gold;
+}
+
+.enc-screen .trypoke-menu .status-true {
+  color: limegreen;
+}
+
+.enc-screen .trypoke-menu .status-false {
+  color: red;
+}
+
+.enc-screen .trypoke-menu .trypoke-ball {
+  pointer-events: none;
+  position: absolute;
+  width: 30px;
+  top: -70px;
+  opacity: 0;
+}
+
+.enc-screen .trypoke-menu .trypoke-catchbox img {
+  z-index: 2;
+}
+
+.player-menu {
+  max-width: 250px;
+  height: 600px;
+  width: 100%;
+  background: white;
+  -webkit-box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
+  margin-right: 30px;
+  position: absolute;
+  left: 40px;
+  padding: 20px;
+}
+
+.player-menu .player-stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.player-menu .player-stats .player-profile .player-profile__name {
+  font-size: 12px;
+}
+
+.player-menu .player-stats .player-inventory {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.player-menu .player-stats .player-inventory .ball-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.player-menu .player-stats .player-inventory .ball-box .ball {
+  max-width: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-right: 5px;
+}
+
+.player-menu .player-stats .player-inventory .ball-box .ball-count {
+  font-size: 9px;
+}
+
+.player-menu .player-pokemon {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow-y: scroll;
+  max-height: 90%;
+  margin-top: 20px;
+}
+
+.player-menu .player-pokemon .pokemon-card {
+  width: 50%;
+}
+
+.player-menu .player-pokemon .pokemon-card .pokemon-card__info {
+  text-align: center;
+}
+
+.player-menu .player-pokemon .pokemon-card .pokemon-card__info .release-icon {
+  width: 15px;
+  display: inline;
+  margin-left: 5px;
+  position: relative;
+  top: 1.5px;
+  color: red;
+  cursor: pointer;
+}
+
+.player-menu .player-pokemon .pokemon-card .pokemon-card__info .release-icon:hover {
+  opacity: 0.5;
+}
+
+.player-menu .player-pokemon .pokemon-card .pokemon-card__info .pokemon-card__name {
+  margin: 0px;
+  font-size: 12px;
+  display: inline;
+}
+
+.player-menu .player-pokemon .pokemon-card .pokemon-card__info .pokemon-card__date {
+  font-size: 8px;
+}
+
+.player-menu .player-pokemon .pokemon-card:hover .pokemon-card__stats {
+  display: block;
+}
+
+.player-menu .player-pokemon .pokemon-card .pokemon-card__stats {
+  display: none;
+  -webkit-box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  z-index: 2;
+  background: white;
+  border-radius: 5px;
+}
+
+.player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat {
+  margin: 3px;
+}
+
+.player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-name {
+  font-size: 10px;
+}
+
+.player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-bar {
+  background-color: #f9f9f9;
+  width: 150px;
+  height: 5px;
+  position: relative;
+  margin-top: 5px;
+}
+
+.player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-bar .stat-thumb {
+  background-color: lightseagreen;
+  height: 100%;
+}
+/*# sourceMappingURL=App.css.map */
