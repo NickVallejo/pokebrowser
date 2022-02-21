@@ -7,9 +7,10 @@
 body {
   background-image: url("../assets/img/pokebg.png");
   background-size: cover;
+  margin: 0px;
 }
 
-.pb-god {
+.app-sec {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,7 +23,7 @@ body {
   height: 90vh;
 }
 
-.field {
+.app-sec .field {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -33,7 +34,7 @@ body {
   position: relative;
 }
 
-.patch {
+.app-sec .patch {
   margin: 5px;
   background-color: lightgreen;
   -webkit-transition: 0.55s ease;
@@ -53,7 +54,7 @@ body {
           align-items: center;
 }
 
-.patch:hover {
+.app-sec .patch:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   background-color: #4ee44e;
@@ -61,7 +62,7 @@ body {
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
-.player {
+.app-sec .player {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -78,28 +79,28 @@ body {
           align-items: center;
 }
 
-.player-bubble {
+.app-sec .player-bubble {
   position: absolute;
   opacity: 0;
 }
 
-.pkball {
+.app-sec .pkball {
   max-width: 35px;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
 }
 
-.fizzle-true {
+.app-sec .fizzle-true {
   opacity: 0;
 }
 
-.enc-menu,
-.enc-engage,
-.trypoke-menu {
+.app-sec .enc-menu,
+.app-sec .enc-engage,
+.app-sec .trypoke-menu {
   height: 300px;
 }
 
-.enc-screen {
+.app-sec .enc-screen {
   width: 100%;
   height: 100%;
   background: #000000bd;
@@ -118,7 +119,7 @@ body {
   opacity: 0;
 }
 
-.enc-screen .enc-screen__wrap {
+.app-sec .enc-screen .enc-screen__wrap {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -133,7 +134,7 @@ body {
           justify-content: center;
 }
 
-.enc-screen .encpoke-box {
+.app-sec .enc-screen .encpoke-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -152,35 +153,35 @@ body {
   margin: 0 auto;
 }
 
-.enc-screen .encpoke-box .encpoke-sprite {
+.app-sec .enc-screen .encpoke-box .encpoke-sprite {
   -webkit-transition: 1s ease;
   transition: 1s ease;
 }
 
-.enc-screen .encpoke-box .encpoke-name {
+.app-sec .enc-screen .encpoke-box .encpoke-name {
   color: white;
   margin-bottom: 0px;
   margin-top: 15px;
 }
 
-.enc-screen .enc-menu {
+.app-sec .enc-screen .enc-menu {
   opacity: 0;
   text-align: center;
 }
 
-.enc-screen .enc-menu .enc-menu__balls {
+.app-sec .enc-screen .enc-menu .enc-menu__balls {
   color: white;
 }
 
-.enc-screen .enc-menu .enc-menu__noengage {
+.app-sec .enc-screen .enc-menu .enc-menu__noengage {
   color: white;
 }
 
-.enc-screen .enc-menu .enc-menu__options {
+.app-sec .enc-screen .enc-menu .enc-menu__options {
   height: 75px;
 }
 
-.enc-screen .enc-menu .ball-menu {
+.app-sec .enc-screen .enc-menu .ball-menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -194,24 +195,24 @@ body {
   margin: 15px auto;
 }
 
-.enc-screen .enc-menu .ball-menu .ball h3,
-.enc-screen .enc-menu .ball-menu .ball span {
+.app-sec .enc-screen .enc-menu .ball-menu .ball h3,
+.app-sec .enc-screen .enc-menu .ball-menu .ball span {
   color: white;
   display: block;
   width: 100%;
   margin: 15px 0px;
 }
 
-.enc-screen .enc-menu .ball-menu .ball img {
+.app-sec .enc-screen .enc-menu .ball-menu .ball img {
   max-width: 50px;
 }
 
-.enc-screen .enc-engage {
+.app-sec .enc-screen .enc-engage {
   width: 100%;
   position: relative;
 }
 
-.enc-screen .enc-engage .enc-slider {
+.app-sec .enc-screen .enc-engage .enc-slider {
   background-color: rgba(255, 255, 255, 0.35);
   position: relative;
   height: 75px;
@@ -224,8 +225,8 @@ body {
           box-shadow: 0 0 5px 1px #fff;
 }
 
-.enc-screen .enc-engage .enc-slider .enc-target,
-.enc-screen .enc-engage .enc-slider .enc-pounder {
+.app-sec .enc-screen .enc-engage .enc-slider .enc-target,
+.app-sec .enc-screen .enc-engage .enc-slider .enc-pounder {
   width: 120px;
   height: 120px;
   position: absolute;
@@ -236,7 +237,7 @@ body {
           box-sizing: border-box;
 }
 
-.enc-screen .enc-engage .enc-slider .enc-pounder {
+.app-sec .enc-screen .enc-engage .enc-slider .enc-pounder {
   background: rgba(255, 255, 255, 0.288);
   border: 3px solid rgba(255, 255, 255, 0.8);
   left: calc(0%);
@@ -253,18 +254,18 @@ body {
           box-shadow: 0 0 7px 1px #fff;
 }
 
-.enc-screen .enc-engage .enc-slider .enc-pounder .enc-pounder-ring {
+.app-sec .enc-screen .enc-engage .enc-slider .enc-pounder .enc-pounder-ring {
   border: 3px solid rgba(50, 176, 226, 0.6);
   width: 70px;
   height: 70px;
   border-radius: 100%;
 }
 
-.enc-screen .enc-engage .enc-slider .enc-target {
+.app-sec .enc-screen .enc-engage .enc-slider .enc-target {
   background-image: url("../assets/img/slider-target.png");
 }
 
-.enc-screen .enc-engage .tap-value {
+.app-sec .enc-screen .enc-engage .tap-value {
   position: absolute;
   -webkit-transition: 1.3s;
   transition: 1.3s;
@@ -275,23 +276,23 @@ body {
   font-size: 65px;
 }
 
-.enc-screen .enc-engage .tap-value__perfect {
+.app-sec .enc-screen .enc-engage .tap-value__perfect {
   color: darkturquoise;
 }
 
-.enc-screen .enc-engage .tap-value__great {
+.app-sec .enc-screen .enc-engage .tap-value__great {
   color: greenyellow;
 }
 
-.enc-screen .enc-engage .tap-value__ok {
+.app-sec .enc-screen .enc-engage .tap-value__ok {
   color: gold;
 }
 
-.enc-screen .enc-engage .tap-value__miss {
+.app-sec .enc-screen .enc-engage .tap-value__miss {
   color: red;
 }
 
-.enc-screen .enc-engage .tap-value__fly {
+.app-sec .enc-screen .enc-engage .tap-value__fly {
   top: -100px;
   right: 550px;
   opacity: 0;
@@ -299,34 +300,34 @@ body {
           transform: rotate(40deg);
 }
 
-.enc-screen .trypoke-menu {
+.app-sec .enc-screen .trypoke-menu {
   text-align: center;
   position: relative;
 }
 
-.enc-screen .trypoke-menu .trypoke-title {
+.app-sec .enc-screen .trypoke-menu .trypoke-title {
   color: white;
   font-size: 24px;
 }
 
-.enc-screen .trypoke-menu .trypoke-catch {
+.app-sec .enc-screen .trypoke-menu .trypoke-catch {
   color: white;
   margin-top: 10px;
 }
 
-.enc-screen .trypoke-menu .status-pending {
+.app-sec .enc-screen .trypoke-menu .status-pending {
   color: gold;
 }
 
-.enc-screen .trypoke-menu .status-true {
+.app-sec .enc-screen .trypoke-menu .status-true {
   color: limegreen;
 }
 
-.enc-screen .trypoke-menu .status-false {
+.app-sec .enc-screen .trypoke-menu .status-false {
   color: red;
 }
 
-.enc-screen .trypoke-menu .trypoke-ball {
+.app-sec .enc-screen .trypoke-menu .trypoke-ball {
   pointer-events: none;
   position: absolute;
   width: 30px;
@@ -334,11 +335,11 @@ body {
   opacity: 0;
 }
 
-.enc-screen .trypoke-menu .trypoke-catchbox img {
+.app-sec .enc-screen .trypoke-menu .trypoke-catchbox img {
   z-index: 2;
 }
 
-.player-menu {
+.app-sec .player-menu {
   max-width: 250px;
   height: 600px;
   width: 100%;
@@ -351,7 +352,7 @@ body {
   padding: 20px;
 }
 
-.player-menu .player-stats {
+.app-sec .player-menu .player-stats {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -360,17 +361,17 @@ body {
           justify-content: space-between;
 }
 
-.player-menu .player-stats .player-profile .player-profile__name {
+.app-sec .player-menu .player-stats .player-profile .player-profile__name {
   font-size: 12px;
 }
 
-.player-menu .player-stats .player-inventory {
+.app-sec .player-menu .player-stats .player-inventory {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.player-menu .player-stats .player-inventory .ball-box {
+.app-sec .player-menu .player-stats .player-inventory .ball-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -379,18 +380,18 @@ body {
           align-items: center;
 }
 
-.player-menu .player-stats .player-inventory .ball-box .ball {
+.app-sec .player-menu .player-stats .player-inventory .ball-box .ball {
   max-width: 20px;
   -o-object-fit: contain;
      object-fit: contain;
   margin-right: 5px;
 }
 
-.player-menu .player-stats .player-inventory .ball-box .ball-count {
+.app-sec .player-menu .player-stats .player-inventory .ball-box .ball-count {
   font-size: 9px;
 }
 
-.player-menu .player-pokemon {
+.app-sec .player-menu .player-pokemon {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: start;
@@ -404,15 +405,15 @@ body {
   margin-top: 20px;
 }
 
-.player-menu .player-pokemon .pokemon-card {
+.app-sec .player-menu .player-pokemon .pokemon-card {
   width: 50%;
 }
 
-.player-menu .player-pokemon .pokemon-card .pokemon-card__info {
+.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__info {
   text-align: center;
 }
 
-.player-menu .player-pokemon .pokemon-card .pokemon-card__info .release-icon {
+.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__info .release-icon {
   width: 15px;
   display: inline;
   margin-left: 5px;
@@ -422,25 +423,25 @@ body {
   cursor: pointer;
 }
 
-.player-menu .player-pokemon .pokemon-card .pokemon-card__info .release-icon:hover {
+.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__info .release-icon:hover {
   opacity: 0.5;
 }
 
-.player-menu .player-pokemon .pokemon-card .pokemon-card__info .pokemon-card__name {
+.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__info .pokemon-card__name {
   margin: 0px;
   font-size: 12px;
   display: inline;
 }
 
-.player-menu .player-pokemon .pokemon-card .pokemon-card__info .pokemon-card__date {
+.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__info .pokemon-card__date {
   font-size: 8px;
 }
 
-.player-menu .player-pokemon .pokemon-card:hover .pokemon-card__stats {
+.app-sec .player-menu .player-pokemon .pokemon-card:hover .pokemon-card__stats {
   display: block;
 }
 
-.player-menu .player-pokemon .pokemon-card .pokemon-card__stats {
+.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__stats {
   display: none;
   -webkit-box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
@@ -453,15 +454,15 @@ body {
   border-radius: 5px;
 }
 
-.player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat {
+.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat {
   margin: 3px;
 }
 
-.player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-name {
+.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-name {
   font-size: 10px;
 }
 
-.player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-bar {
+.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-bar {
   background-color: #f9f9f9;
   width: 150px;
   height: 5px;
@@ -469,7 +470,7 @@ body {
   margin-top: 5px;
 }
 
-.player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-bar .stat-thumb {
+.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-bar .stat-thumb {
   background-color: lightseagreen;
   height: 100%;
 }

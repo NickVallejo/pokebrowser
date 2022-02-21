@@ -2,18 +2,18 @@ import React, {useState, useEffect} from 'react'
 import './css/App.css'
 import Field from './components/Field'
 import PlayerMenu from './components/playermenu-components/PlayerMenu';
+import {Provider} from 'react-redux'
+import store  from  './store/index'
 // import pokemon from "./assets/pkmn.json";
 
 function App() {
-  // useEffect(() => {
-  //   console.log(pokemon[5])
-  // }, [])
-
   return (
-    <div className="pb-god">
-      <PlayerMenu />
-      <Field />
-    </div>
+    <Provider store={store}>
+      <section className="app-sec">
+        <PlayerMenu />
+        <Field />
+      </section>
+    </Provider>
   );
 }
 
