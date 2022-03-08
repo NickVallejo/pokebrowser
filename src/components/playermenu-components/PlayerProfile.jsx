@@ -1,9 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 function PlayerProfile() {
+  const username = useSelector(state => state.usermeta.user.username)
+
   return (
       <div className="player-profile">
-          <h3 className="player-profile__name">Trainer Nick</h3>
+          <h3 className="player-profile__name">Trainer {username}</h3>
       </div>
   )
 }

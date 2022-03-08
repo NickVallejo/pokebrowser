@@ -6,6 +6,9 @@ const myPokemonSlice = createSlice({
     name: 'mypokemon',
     initialState: initState,
     reducers: {
+        setPokemonOnLoad(state, action){
+            state.pokemon = action.payload.pokemon
+        },
         addPokemon(state, action){
             state.pokemon.push(action.payload.poke)
         },

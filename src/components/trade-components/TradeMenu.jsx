@@ -1,30 +1,21 @@
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useRef} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import TradeUser from './TradeUser'
+import { tradeActions } from '../../store'
+import playerSrcReq from '../../helpers/requests/playerSrc-request'
 
 function TradeMenu() {
     const srcRef = useRef()
-    const [srcResults, setSrcResults] = useState()
+    const srcResults = useSelector(state => state.trades.srcResults)
+    const dispatch = useDispatch()
 
-    const submitSearch = async() => {
-        try{
-            const srcReq = await fetch(`http://localhost:4000/api/players?src=${srcRef.current.value}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded', 
-                },
-            })
+    useEffect(() => {
+        return dispatch(tradeActions.tradeResultsSearch({results: undefined}))
+    }, [])
 
-            if(srcReq.status === 200){
-                const srcRes = await srcReq.json()
-                console.log('src results', srcRes)
-                setSrcResults(srcRes)
-            } else{
-                throw new Error('Internal Server Error')
-            }
-    
-        } catch(err){
-            console.log(err)
-        }
+    const submitSearchHandler = async() => {
+        const playerSrcRes = await playerSrcReq(srcRef.current.value)
+        dispatch(tradeActions.tradeResultsSearch({results: playerSrcRes.data}))
     }
 
   return (
@@ -32,11 +23,14 @@ function TradeMenu() {
         <h3>Trades</h3>
         <div className="player-src">
             <input ref={srcRef} type="text" />
-            <button onClick={submitSearch}>Search</button>
+            <button onClick={submitSearchHandler}>Search</button>
         </div>
         <div className="player-display">
             {srcResults && srcResults.map(user => {
-                return <TradeUser key={user._id} user={user} />
+                return <TradeUser 
+                key={user._id} 
+                user={user} 
+                />
             })}
         </div>
     </section>

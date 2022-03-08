@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {fieldArray} from '../helpers/fieldArray'
+import { fieldArray } from "../../../helpers/fieldArray";
+
 
 const initSize = 6
 const initField = fieldArray(initSize)

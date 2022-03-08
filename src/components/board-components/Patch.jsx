@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import patchBg from '../assets/patch.png';
+import patchBg from '../../assets/patch.png';
 import {useDispatch} from 'react-redux'
-import { byeItem } from '../store/action-creators/itemAnimations';
-import { rollEncounter } from '../store/action-creators/encounterGenerator';
-import { encounterActions } from '../store';
-import pokeball from '../assets/img/pokeball.png'
+import { byeItem } from '../../store/action-creators/animations-items';
+import { rollEncounter } from '../../store/action-creators/thunks-configEncounter';
+import { encounterActions } from '../../store';
+import pokeball from '../../assets/img/pokeball.png'
 
 function Patch({fieldSize, pokeballPatch, playerPatch, row, col}) {
   const dispatch = useDispatch()
@@ -20,14 +20,11 @@ function Patch({fieldSize, pokeballPatch, playerPatch, row, col}) {
 
   //if item on patch: set fizzle timer, if player & item: player eats item
   useEffect(() => {
-    //if player, but no patch, roll encounter
     if(playerPatch && !pokeballPatch) {
       const pkmn = dispatch(rollEncounter())
       pkmn && dispatch(encounterActions.startEncounter({pkmn}))
     }
-    //if pokeball but no player, start pkball dissapear timer 
     else if(pokeballPatch && !playerPatch) {setTimeout(() => setFizzle(true), 10000)}
-    //if pokeball and player, player eats pkball
     else if(playerPatch && pokeballPatch) {setFizzle(true)}
   }, [playerPatch, pokeballPatch])
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import bubble from '../../assets/img/player-bubble.svg'
-import { encounterBubbleAnim } from '../../store/action-creators/encounterAnimations';
+import { encounterBubbleAnim } from '../../store/action-creators/animations-encounters';
 
 function PlayerBubble() {
   const bubbleBox = useRef()

@@ -1,10 +1,9 @@
 import React,  {useEffect, useRef,} from 'react';
-import { useSelector,  useDispatch } from 'react-redux';
-import { encounterActions } from '../../store';
-import EngageMenu from './EngageMenu';
+import { useSelector } from 'react-redux';
+import EncounterMenu from './EncounterMenu';
 import EngageInit from './EngageInit';
 import TryPoke from './TryPoke';
-import { encounterStartAnim } from '../../store/action-creators/encounterAnimations';
+import { encounterStartAnim } from '../../store/action-creators/animations-encounters';
 
 function Encounter() {
     const poke = useSelector(state => state.encounter.encPoke)
@@ -24,7 +23,7 @@ function Encounter() {
     return <div ref={screen} className="enc-screen">
         <div className="enc-screen__wrap">
             {(!engaged && trying) && <TryPoke poke={poke} healthReducer={healthReducer}/>}
-            {(!engaged && !trying) && <EngageMenu retry={retry} poke={poke} playerInv={playerInv}/>}
+            {(!engaged && !trying) && <EncounterMenu retry={retry} poke={poke} playerInv={playerInv}/>}
             {(engaged && !trying) && <EngageInit poke={poke}/>}
         </div>
     </div>;

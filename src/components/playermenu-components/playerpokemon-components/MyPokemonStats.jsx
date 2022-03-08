@@ -3,9 +3,7 @@ import { useEffect } from 'react';
 import Stat from './Stat';
 
 function MyPokemonStats({stats}) {
-    useEffect(() => {
-        console.log('stats: ', stats)
-    }, [stats])
+
   return (
     <div className="pokemon-card__stats">
         {stats.map(stat => (

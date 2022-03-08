@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import Patch from './Patch';
-import Player from './player-components/Player';
-import Encounter from './encounter-components/Encounter';
-import {fieldArray} from '../helpers/fieldArray'
+import Player from '../player-components/Player';
+import Encounter from '../encounter-components/Encounter';
 import {useSelector, useDispatch} from 'react-redux'
-import { fieldActions } from '../store';
-import encounterAnimations from '../store/action-creators/encounterAnimations';
+import { fieldActions } from '../../store';
 
 function Field() {
   const dispatch = useDispatch()
@@ -14,7 +12,6 @@ function Field() {
   const fieldSize = useSelector(state => state.field.size)
   const pokeballPositions = useSelector(state => state.field.pokeballPositions)
   const poke = useSelector(state => state.encounter.encPoke)
-  const mypokes = useSelector(state => state.mypokemon.pokemon)
 
   const pokeballSpawner = () => {
     const pokeballRoll = Math.floor(Math.random() * 6) + 1

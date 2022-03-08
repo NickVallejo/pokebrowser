@@ -1,38 +1,20 @@
 import React, {useEffect, useState} from 'react'
 import TradeButton from './TradeButton'
+import { useDispatch, useSelector } from 'react-redux'
+import { tradeActions } from '../../../store'
+import { Link } from 'react-router-dom'
+import tradeReq from '../../../helpers/requests/trade-request'
+
 
 function TradeButtons({active_trade, _id}) {
     const [buttonState, setButtonState] = useState(false)
     const [loading, setLoading] = useState(true)
+    const srcResults = useSelector(state => state.trades.srcResults)
+    const dispatch = useDispatch()
 
     const tradeRequestHandler = async method => {
-        let body
-
-        switch(method){
-            case 'DELETE':
-                body = {tradeId: active_trade.tradeId}
-                break
-            case 'POST':
-                body = {userId: _id}
-                break
-        }
-
-        try{
-            const tradeReq = await fetch('http://localhost:4000/api/trades', {
-                method,
-                headers: {
-                    'Content-Type': 'application/json', 
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify(body)
-            })
-
-            const tradeRes = await tradeReq.json()
-            console.log(tradeRes)
-
-        } catch(err){
-            console.log(err)
-        }
+        const tradeRes = await tradeReq(method, undefined, active_trade, _id)
+        dispatch(tradeActions.tradeResultsModify({_id, trade: tradeRes.data.modified_trade}))
     }
 
     useEffect(() => {
@@ -51,9 +33,9 @@ function TradeButtons({active_trade, _id}) {
                 setButtonState('acceptor-pending')
             }
         }
-
+        
         setLoading(false)
-    }, [])
+    }, [srcResults])
 
 if(!loading){
     if(buttonState === 'inactive'){
@@ -67,7 +49,7 @@ if(!loading){
     else if(buttonState === 'active'){
         return(
             <div className="trade-user__btns">
-                <button className="enter-trade__btn">Enter Trade</button>
+                <button className="enter-trade__btn"><Link to={active_trade.roomId}>Enter Trade</Link></button>
                 <TradeButton text="Cancel Trade" method="DELETE" btnRequest={tradeRequestHandler} />
             </div>
         )
@@ -85,17 +67,17 @@ if(!loading){
     else if(buttonState === 'acceptor-pending'){
         return(
             <div className="trade-user__btns">
-                <button className="accept-trade__btn">Accept Trade</button>
+                <TradeButton text="Accept Trade" method="PUT" btnRequest={tradeRequestHandler} />
                 <TradeButton text="Reject Trade" method="DELETE" btnRequest={tradeRequestHandler} />
             </div>
         )
     } else{
         <div className="trade-user__btns">
-            <h3>in the else :/</h3>
+            <h3>Load Error</h3>
         </div>
     }
 } else{
-    return <h3>Loading</h3>
+    return <h3>Loading...</h3>
 }
 }
 

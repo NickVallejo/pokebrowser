@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import { encounterSliderTap } from '../../../store/action-creators/encounterEngage';
+import { encounterSliderTap } from '../../../store/action-creators/thunks-encounters';
 import { useDispatch, useSelector } from 'react-redux';
 import TapValues from './TapValues';
 import SliderBar from './SliderBar';
-import encounterAnims from '../../../store/action-creators/encounterAnimations'
+import encounterAnims from '../../../store/action-creators/animations-encounters'
 
 function EncounterSlider({target, pounder, slider, pokeImg}) {
   const dispatch = useDispatch()
