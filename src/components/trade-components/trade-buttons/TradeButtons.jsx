@@ -49,7 +49,7 @@ if(!loading){
     else if(buttonState === 'active'){
         return(
             <div className="trade-user__btns">
-                <button className="enter-trade__btn"><Link to={active_trade.roomId}>Enter Trade</Link></button>
+                <button className="enter-trade__btn"><Link to={`/trades/room/${active_trade.roomId}`}>Enter Trade</Link></button>
                 <TradeButton text="Cancel Trade" method="DELETE" btnRequest={tradeRequestHandler} />
             </div>
         )
