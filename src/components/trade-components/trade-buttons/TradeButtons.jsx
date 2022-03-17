@@ -14,10 +14,15 @@ function TradeButtons({active_trade, _id}) {
 
     const tradeRequestHandler = async method => {
         const tradeRes = await tradeReq(method, undefined, active_trade, _id)
-        dispatch(tradeActions.tradeResultsModify({_id, trade: tradeRes.data.modified_trade}))
+        if(!tradeRes.success){
+            alert(`Toast: ${tradeRes.data}`)
+        } else{
+            dispatch(tradeActions.tradeResultsModify({_id, trade: tradeRes.data.modified_trade}))
+        }
     }
 
     useEffect(() => {
+        console.log('ACTIVE TRADE', active_trade)
         if(active_trade.status == 'inactive'){
             setButtonState('inactive')
         }
@@ -49,7 +54,7 @@ if(!loading){
     else if(buttonState === 'active'){
         return(
             <div className="trade-user__btns">
-                <button className="enter-trade__btn"><Link to={`/trades/room/${active_trade.roomId}`}>Enter Trade</Link></button>
+                <button className="enter-trade__btn"><Link to={`/trades/room/${active_trade.roomId}?_id=${active_trade.tradeId}`}>Enter Trade</Link></button>
                 <TradeButton text="Cancel Trade" method="DELETE" btnRequest={tradeRequestHandler} />
             </div>
         )

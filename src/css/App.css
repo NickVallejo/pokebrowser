@@ -391,7 +391,20 @@ body {
   font-size: 9px;
 }
 
-.app-sec .player-menu .player-pokemon {
+.app-sec .trade-menu {
+  max-width: 250px;
+  height: 600px;
+  width: 100%;
+  background: white;
+  margin-left: 30px;
+  position: absolute;
+  -webkit-box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
+  right: 40px;
+  padding: 20px;
+}
+
+.player-pokemon {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: start;
@@ -405,15 +418,15 @@ body {
   margin-top: 20px;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card {
+.player-pokemon .pokemon-card {
   width: 50%;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__info {
+.player-pokemon .pokemon-card .pokemon-card__info {
   text-align: center;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__info .release-icon {
+.player-pokemon .pokemon-card .pokemon-card__info .release-icon {
   width: 15px;
   display: inline;
   margin-left: 5px;
@@ -423,25 +436,25 @@ body {
   cursor: pointer;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__info .release-icon:hover {
+.player-pokemon .pokemon-card .pokemon-card__info .release-icon:hover {
   opacity: 0.5;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__info .pokemon-card__name {
+.player-pokemon .pokemon-card .pokemon-card__info .pokemon-card__name {
   margin: 0px;
   font-size: 12px;
   display: inline;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__info .pokemon-card__date {
+.player-pokemon .pokemon-card .pokemon-card__info .pokemon-card__date {
   font-size: 8px;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card:hover .pokemon-card__stats {
+.player-pokemon .pokemon-card:hover .pokemon-card__stats {
   display: block;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__stats {
+.player-pokemon .pokemon-card .pokemon-card__stats {
   display: none;
   -webkit-box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
@@ -454,15 +467,15 @@ body {
   border-radius: 5px;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat {
+.player-pokemon .pokemon-card .pokemon-card__stats .stat {
   margin: 3px;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-name {
+.player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-name {
   font-size: 10px;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-bar {
+.player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-bar {
   background-color: #f9f9f9;
   width: 150px;
   height: 5px;
@@ -470,21 +483,8 @@ body {
   margin-top: 5px;
 }
 
-.app-sec .player-menu .player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-bar .stat-thumb {
+.player-pokemon .pokemon-card .pokemon-card__stats .stat .stat-bar .stat-thumb {
   background-color: lightseagreen;
   height: 100%;
-}
-
-.app-sec .trade-menu {
-  max-width: 250px;
-  height: 600px;
-  width: 100%;
-  background: white;
-  margin-left: 30px;
-  position: absolute;
-  -webkit-box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.2);
-  right: 40px;
-  padding: 20px;
 }
 /*# sourceMappingURL=App.css.map */

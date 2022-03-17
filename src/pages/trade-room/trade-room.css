@@ -1,1 +1,161 @@
-/* No CSS *//*# sourceMappingURL=trade-room.css.map */
+.trader-boxes {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.trader-boxes .trader-box__section[name="2"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+          flex-flow: row-reverse;
+}
+
+.trader-boxes .trader-box__section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.trader-boxes .trader-box__section .trader-box {
+  width: 300px;
+  padding: 20px;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .trade-btn {
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 7px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .trade-btn:hover {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .trade-btn img {
+  width: 25px;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .accept {
+  border: 3px solid #30b830;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .reject {
+  border: 3px solid #c72727;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .accept-on {
+  background-color: #30b830;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .reject-on {
+  background-color: #c72727;
+}
+
+.trader-boxes .trader-box__section .trader-box .leave {
+  display: block;
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background: white;
+}
+
+.trader-boxes .trader-box__section .trader-box .player-pokemon {
+  height: 750px;
+}
+
+.trader-boxes .trader-box__section .trader-box .player-pokemon .pokemon-card .pokemon-card__info .pokemon-card__name {
+  display: block;
+}
+
+.trader-boxes .trader-box__section .trader-box .player-pokemon .offered-poke {
+  opacity: 0.35;
+}
+
+.trader-boxes .trader-box__section .trader-field {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.trader-boxes .trader-box__section .trader-field .pokemon-card {
+  text-align: center;
+}
+
+.trade-confirm__overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.trade-confirm__overlay .trade-confirm__box {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+}
+
+.trade-confirm__overlay .trade-confirm__box .trade-confirm__review {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.trade-confirm__overlay .trade-confirm__box button {
+  margin: 20px;
+}
+/*# sourceMappingURL=trade-room.css.map */

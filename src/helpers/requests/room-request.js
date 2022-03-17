@@ -1,6 +1,6 @@
-const roomReq = async(id) => {
+const roomReq = async(id, _id) => {
     try{
-        const roomRequest = await fetch(`http://localhost:4000/api/trades/room/${id}`, {
+        const roomRequest = await fetch(`http://localhost:4000/api/trades/room/${id}?_id=${_id}`, {
             method: 'GET',
             credentials: 'include',
             headers: {

@@ -15,9 +15,22 @@ function App() {
   const user = useSelector(state => state.usermeta.user)
 
   useEffect(async() => {
-    const authRes = await authReq()
-    dispatch(userMetaActions.setUserDataOnload({user: authRes}))
-    setLoading(false)
+
+    const appInit = async() => {
+
+        const authRes = await authReq()
+
+        if(authRes){
+          dispatch(userMetaActions.setUserDataOnload({user: authRes}))
+          setLoading(false)
+        } else{
+          console.log('ERROR THROWN ON EXPIRY')
+          document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+          navigate('/login', {replace: true})
+        }
+    }
+
+    appInit()
   }, [])
 
   if(!loading && user === false) navigate('/login')

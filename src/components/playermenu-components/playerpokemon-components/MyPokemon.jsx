@@ -2,10 +2,11 @@ import React, {useEffect} from 'react';
 import MyPokemonStats from './MyPokemonStats';
 import MyPokemonInfo from './MyPokemonInfo';
 
-function MyPokemon({poke}) {
+function MyPokemon({poke, flee}) {
   return (
     <div className='pokemon-card'>
         <MyPokemonInfo 
+            flee={flee}
             id={poke.id} 
             date={poke.date} 
             name={poke.name} 

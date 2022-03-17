@@ -15,8 +15,8 @@ const authReq = async() => {
         }
 
     } catch(err){
+        console.log('ERROR SENT HERE', err)
         alert(`Unhandled error: ${err.message}. Check console.`)
-        console.log(err)
     }
 }
 
