@@ -1,7 +1,22 @@
+body {
+  min-width: 1000px;
+}
+
+.trader-wrap {
+  background-image: url("../../assets/pages/page-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .trader-boxes {
-  width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  max-width: 1880px;
+  padding: 0px 40px;
+  margin: 0 auto;
   .trader-box__section[name="2"] {
     flex-flow: row-reverse;
   }
@@ -9,54 +24,125 @@
     display: flex;
     flex: 1;
     .trader-box {
-      width: 300px;
-      padding: 20px;
+      padding-top: 0px;
+      border-radius: 20px;
+      -webkit-box-shadow: 0px 0px 17px -6px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 0px 17px -6px rgba(0, 0, 0, 0.2);
+      height: 650px;
+      max-width: 355px;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+      background-color: #f9f9f9;
+      .trader-box__title {
+        font-size: 16px;
+      }
+      .trader-box__details {
+        box-sizing: border-box;
+        padding: 25px;
+        padding-top: 5px;
+        -webkit-box-shadow: 0px 7px 10px -6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 7px 10px -6px rgba(0, 0, 0, 0.1);
+        .leave {
+          width: 100%;
+          a {
+            text-decoration: none;
+          }
+        }
+      }
       .acc-dec {
         display: flex;
         justify-content: space-between;
         .trade-btn {
-          width: 50px;
-          height: 50px;
+          width: 45%;
+          height: 40px;
           display: flex;
           justify-content: center;
           align-items: center;
           border-radius: 7px;
-          margin: 20px;
+          margin-bottom: 20px;
           cursor: pointer;
-          &:hover {
-            transform: scale(0.95);
+          a {
+            text-decoration: none;
           }
-          img {
-            width: 25px;
+          &:hover {
+            transform: scale(0.98);
+          }
+          i {
+            color: white;
           }
         }
         .accept {
-          border: 3px solid rgb(48, 184, 48);
+          border: 4px solid #1eae68;
+          i {
+            color: #1eae68;
+          }
         }
         .reject {
-          border: 3px solid rgb(199, 39, 39);
+          border: 4px solid #a11717;
+          i {
+            color: #a11717;
+          }
         }
+
         .accept-on {
-          background-color: rgb(48, 184, 48);
+          background-color: #1eae68;
+          border: 4px solid #1eae68;
+          i {
+            color: white;
+          }
+          &::after,
+          &::before {
+            background-color: #28c756;
+          }
+          &:hover {
+            background-color: #28c756;
+          }
+          &:hover::before,
+          &:hover::after {
+            background-color: #1eae68;
+          }
         }
         .reject-on {
-          background-color: rgb(199, 39, 39);
+          background-color: #a11717;
+          border: 4px solid #a11717;
+          i {
+            color: white;
+          }
+          &::after,
+          &::before {
+            background-color: #bb1f1f;
+          }
+          &:hover {
+            background-color: #bb1f1f;
+          }
+          &:hover::before,
+          &:hover::after {
+            background-color: #a11717;
+          }
         }
       }
-      .leave {
-        display: block;
-        width: 100%;
-        height: 30px;
-        border-radius: 5px;
-        border: none;
-        background: white;
-      }
-      .player-pokemon {
-        height: 750px;
+      .trader-pokemon {
+        box-sizing: border-box;
+        position: relative;
+        padding: 10px;
+        .pokemon-list {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-start;
+          max-height: 425px;
+          overflow-y: auto;
+          .pokemon-card {
+            width: 50%;
+            cursor: pointer;
+          }
+        }
         .pokemon-card {
           .pokemon-card__info {
+            text-align: center;
             .pokemon-card__name {
               display: block;
+              margin: 10px 0px;
             }
           }
         }
@@ -72,6 +158,42 @@
       align-items: center;
       .pokemon-card {
         text-align: center;
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background-image: url("../../assets/pages/pokeball-bg.png");
+        background-size: contain;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .pokemon-card__info {
+          .pokemon-card__name {
+            margin-top: 5px;
+          }
+        }
+        .return-poke {
+          cursor: pointer;
+          width: 25px;
+          height: 25px;
+          border-radius: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #a11717;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          span {
+            color: white;
+            font-size: 10px;
+            position: relative;
+            left: 1px;
+          }
+          &:hover {
+            opacity: 0.7;
+          }
+        }
       }
     }
   }

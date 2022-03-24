@@ -12,6 +12,9 @@ const tradeSlice = createSlice({
         tradeResultsModify(state, action){
             const index = state.srcResults.findIndex(res => res._id == action.payload._id)
             if(index != -1) state.srcResults[index].active_trade = action.payload.trade
+        },
+        cleanupResults(state, action){
+            state.srcResults = initState.srcResults
         }
     }
 })

@@ -1,14 +1,15 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { useSelector,  useDispatch } from 'react-redux';
-import { encounterActions } from '../../store';
 import EncounterPoke from './EncounterPoke';
 import BallMenu from './BallMenu';
 import { encounterMenuAnim } from '../../store/action-creators/animations-encounters';
 import { encounterIsPlayerRetrying } from '../../store/action-creators/thunks-encounters';
+import { stopEncounterInit } from '../../store/action-creators/thunks-encounters';
+
 
 function EncounterMenu({poke, playerInv, retry}) {
   const dispatch = useDispatch()
-  const runEncounter = () => dispatch(encounterActions.stopEncounter())
+  const runEncounter = () => dispatch(stopEncounterInit(true))
   const max = useSelector(state => state.mypokemon.max)
   const pokes = useSelector(state => state.mypokemon.pokemon)
   const [engage, setEngage] = useState(false)
@@ -32,7 +33,7 @@ function EncounterMenu({poke, playerInv, retry}) {
         <div className="enc-menu__options">
         <div className="enc-menu__good">
           <BallMenu playerInv={playerInv} />
-          <button className="enc-menu__run" onClick={runEncounter}>Run!</button>
+          <button className="enc-menu__run pkb-btn prim" onClick={runEncounter}>Run!</button>
         </div>
         </div>
     </div>

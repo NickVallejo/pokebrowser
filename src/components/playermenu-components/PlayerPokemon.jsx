@@ -15,9 +15,11 @@ function PlayerPokemon() {
 
   return (
       <div className="player-pokemon">
-          {playerPokes.map(poke => (
-              <MyPokemon key={poke.id} poke={poke} flee={true}/>
-          ))}
+          <div className="player-pokemon__list">
+            {playerPokes.map(poke => (
+                <MyPokemon key={poke.id} poke={poke} flee={true}/>
+            ))}
+          </div>
       </div>
   )
 }

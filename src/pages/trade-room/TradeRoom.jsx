@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import roomReq from '../../helpers/requests/room-request';
 import TradeRoomActive from './TradeRoomActive';
+import Loading from '../../components/load-components/Loading';
+import NotFound from '../../components/load-components/NotFound';
 import { Provider } from 'react-redux';
 import traderStore from '../../store-traderooms';
 import './trade-room.css'
@@ -15,20 +17,24 @@ function TradeRoom() {
     const [searchParams, setSearchParams] = useSearchParams();
 
 
-    useEffect(async() => {
-        try{
-            const _id = searchParams.get('_id')
-            const roomRes = await roomReq(params.id, _id)
-            if(roomRes.success) {
-                setEnteredUser(roomRes.data.user)
-                setHost(roomRes.data.host)
-                setAuth(true)
+    useEffect(() => {
+        const roomRequest = async() => {
+            try{
+                const _id = searchParams.get('_id')
+                const roomRes = await roomReq(params.id, _id)
+                if(roomRes.success) {
+                    setEnteredUser(roomRes.data.user)
+                    setHost(roomRes.data.host)
+                    setAuth(true)
+                }
+                else setAuth(false)
+                
+            } catch(err){
+                navigate('/login', {replace: true})
             }
-            else setAuth(false)
-            
-        } catch(err){
-            navigate('/login', {replace: true})
         }
+
+        roomRequest()
     }, [])
 
     if(auth === true){
@@ -38,11 +44,9 @@ function TradeRoom() {
             </Provider>
           )
     } else if (auth === false){
-        return (
-            <div>This trade ID does not exist. At least not for you...</div>
-          )
+        return <NotFound text={'This room does not exist. At least not for you...'} />
     } else{
-        return <div>Loading...</div>
+        return <Loading />
     }
 }
 

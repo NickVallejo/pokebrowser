@@ -72,7 +72,6 @@ function TradeRoomActive({roomId, enteredUser, host}) {
 
   return (
       <div className="trader-wrap">
-          <h1>Traders are here!</h1>
           <div className="trader-boxes">
             {traders.map((trader, index) => (
                 <TraderBox 
@@ -84,7 +83,7 @@ function TradeRoomActive({roomId, enteredUser, host}) {
                 index={index} />
             ))}
           </div>
-          {tradeConfirm && <TradeConfirmation userId={enteredUser._id} host={host} traders={traders} socket={socket} host={host} />}
+          {tradeConfirm && <TradeConfirmation userId={enteredUser._id} host={host} traders={traders} socket={socket} />}
       </div>
   )
 }

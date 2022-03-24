@@ -5,6 +5,9 @@ import { byeItem } from '../../store/action-creators/animations-items';
 import { rollEncounter } from '../../store/action-creators/thunks-configEncounter';
 import { encounterActions } from '../../store';
 import pokeball from '../../assets/img/pokeball.png'
+import audioField from '../../helpers/audio-field';
+import { startEncounterInit } from '../../store/action-creators/thunks-encounters';
+const pickupAudio = new Audio(audioField['pickup'])
 
 function Patch({fieldSize, pokeballPatch, playerPatch, row, col}) {
   const dispatch = useDispatch()
@@ -22,10 +25,13 @@ function Patch({fieldSize, pokeballPatch, playerPatch, row, col}) {
   useEffect(() => {
     if(playerPatch && !pokeballPatch) {
       const pkmn = dispatch(rollEncounter())
-      pkmn && dispatch(encounterActions.startEncounter({pkmn}))
+      if(pkmn) dispatch(startEncounterInit(pkmn))
     }
     else if(pokeballPatch && !playerPatch) {setTimeout(() => setFizzle(true), 10000)}
-    else if(playerPatch && pokeballPatch) {setFizzle(true)}
+    else if(playerPatch && pokeballPatch) {
+      pickupAudio.play()
+      setFizzle(true)
+    }
   }, [playerPatch, pokeballPatch])
 
   return <div className="patch" style={{

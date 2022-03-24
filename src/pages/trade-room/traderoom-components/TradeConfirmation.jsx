@@ -49,8 +49,8 @@ function TradeConfirmation({userId, traders, socket, host}) {
                     trader.confirmed && <p key={trader.id}>{trader.id === userId ? 'you' : trader.user} confirmed</p>
                 ))}
             </h6>
-            <button onClick={confirmTrade}>Confirm</button>
-            <button onClick={abortTrade}>Reject</button>
+            <button className='pkb-btn prim' onClick={confirmTrade}>Confirm</button>
+            <button className='pkb-btn ter' onClick={abortTrade}>Reject</button>
         </div>
     </div>
   )

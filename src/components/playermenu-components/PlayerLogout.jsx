@@ -10,7 +10,7 @@ function PlayerLogout() {
     }
 
   return (
-    <button onClick={logoutHandler}>Log Out</button>
+    <button className="pkb-btn prim" onClick={logoutHandler}>Log Out</button>
   )
 }
 

@@ -13,10 +13,12 @@ function TradeButtons({active_trade, _id}) {
     const dispatch = useDispatch()
 
     const tradeRequestHandler = async method => {
+        console.log('trade request modify 1')
         const tradeRes = await tradeReq(method, undefined, active_trade, _id)
         if(!tradeRes.success){
             alert(`Toast: ${tradeRes.data}`)
         } else{
+            console.log('Trade Results modified 2', 'ID I SENT', _id)
             dispatch(tradeActions.tradeResultsModify({_id, trade: tradeRes.data.modified_trade}))
         }
     }
@@ -40,13 +42,13 @@ function TradeButtons({active_trade, _id}) {
         }
         
         setLoading(false)
-    }, [srcResults])
+    }, [srcResults, active_trade])
 
 if(!loading){
     if(buttonState === 'inactive'){
         return(
             <div className="trade-user__btns">
-                <TradeButton text="Request Trade" method="POST" btnRequest={tradeRequestHandler} />
+                <TradeButton className="pkb-btn prim long" text="Request Trade" method="POST" btnRequest={tradeRequestHandler} />
             </div>
         )
     }
@@ -54,8 +56,8 @@ if(!loading){
     else if(buttonState === 'active'){
         return(
             <div className="trade-user__btns">
-                <button className="enter-trade__btn"><Link to={`/trades/room/${active_trade.roomId}?_id=${active_trade.tradeId}`}>Enter Trade</Link></button>
-                <TradeButton text="Cancel Trade" method="DELETE" btnRequest={tradeRequestHandler} />
+                <button className="pkb-btn prim"><Link to={`/trades/room/${active_trade.roomId}?_id=${active_trade.tradeId}`}>Enter Trade</Link></button>
+                <TradeButton className="pkb-btn ter" text="Cancel Trade" method="DELETE" btnRequest={tradeRequestHandler} />
             </div>
         )
     }
@@ -63,8 +65,8 @@ if(!loading){
     else if(buttonState === 'requestor-pending'){
         return(
             <div className="trade-user__btns">
-                <button disabled className="pending-trade__btn">Trade Pending</button>
-                <TradeButton text="Cancel Trade" method="DELETE" btnRequest={tradeRequestHandler} />
+                <button disabled className="pkb-btn sec">Trade Pending</button>
+                <TradeButton className="pkb-btn ter" text="Cancel Trade" method="DELETE" btnRequest={tradeRequestHandler} />
             </div>
         )
     }
@@ -72,8 +74,8 @@ if(!loading){
     else if(buttonState === 'acceptor-pending'){
         return(
             <div className="trade-user__btns">
-                <TradeButton text="Accept Trade" method="PUT" btnRequest={tradeRequestHandler} />
-                <TradeButton text="Reject Trade" method="DELETE" btnRequest={tradeRequestHandler} />
+                <TradeButton className="pkb-btn prim" prim text="Accept Trade" method="PUT" btnRequest={tradeRequestHandler} />
+                <TradeButton className="pkb-btn ter" text="Reject Trade" method="DELETE" btnRequest={tradeRequestHandler} />
             </div>
         )
     } else{

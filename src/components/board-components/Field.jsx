@@ -4,6 +4,7 @@ import Player from '../player-components/Player';
 import Encounter from '../encounter-components/Encounter';
 import {useSelector, useDispatch} from 'react-redux'
 import { fieldActions } from '../../store';
+import { playerActions } from '../../store';
 
 function Field() {
   const dispatch = useDispatch()
@@ -43,14 +44,11 @@ function Field() {
   useEffect(() => {
     const pokeballInterval = setInterval(pokeballSpawner, 2000)
 
-    if(poke){
-      clearInterval(pokeballInterval)
-    }
-    
-    return () => {
-      clearInterval(pokeballInterval)
-    }
+    if(poke) clearInterval(pokeballInterval)
+    return () => clearInterval(pokeballInterval)
   }, [poke])
+
+  useEffect(() => () => dispatch(playerActions.cleanupPlayerLocation()), [])
 
   return <div className="field" style={{width: `${fieldSize}00px`, height:  `${fieldSize}00px`}}>
     <Player/>

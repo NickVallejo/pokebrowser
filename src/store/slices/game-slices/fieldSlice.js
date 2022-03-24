@@ -9,7 +9,7 @@ const initState = {
     array: initField, 
     size: initSize, 
     prevPlayerPosition: {x: 0, y: 0},
-    pokeballPositions: {}
+    pokeballPositions: {},
 }
 
 const fieldSlice = createSlice({
@@ -29,7 +29,7 @@ const fieldSlice = createSlice({
         removePokeballPosition(state, action){
             const {x, y} = action.payload
             delete state.pokeballPositions[x.toString()+y.toString()]
-        }
+        },
     }
 })
 

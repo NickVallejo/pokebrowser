@@ -1,9 +1,35 @@
 import { tryPokeAnim, shakeBallAnim, caughtPokeAnim, escapedPokemonAnim } from "./animations-encounters"
 import { inventoryActions, encounterActions, myPokemonActions } from ".."
 import savePokeReq from "../../helpers/requests/savePoke-request"
+import { encounterMusicToggle, fieldMusicToggle } from "../../helpers/musicDJ"
+import audioEncounter from "../../helpers/audio-encounter"
+
+const runAudio = new Audio(audioEncounter['run'])
+const alert = new Audio(audioEncounter['alert'])
+const pickup = new Audio(audioEncounter['pickup'])
+
+export const stopEncounterInit = (run=false) => {
+    run && runAudio.play()
+    return async(dispatch) => {
+        encounterMusicToggle(false)
+        dispatch(encounterActions.stopEncounter())
+    }
+}
+
+export const startEncounterInit = (pkmn) => {
+    return async(dispatch) => {
+        fieldMusicToggle(false)
+        alert.play()
+        setTimeout(() => encounterMusicToggle(true), 1000)
+        dispatch(encounterActions.startEncounter({pkmn}))
+    }
+}
+
 
 export const encounterChooseBallAndEngage = (key, playerInv) => {
     return (dispatch) => {
+        if(key == 1 || key == 2 || key == 3) pickup.play()
+
         switch(key){
             case '1':
               if(playerInv.balls.pkballs > 0){
@@ -28,7 +54,7 @@ export const encounterChooseBallAndEngage = (key, playerInv) => {
 export const encounterIsPlayerRetrying = (retry) => {
     return (dispatch) => {
         if(!retry){
-            return {duration: 1, timeOut: 2000}
+            return {duration: 1, timeOut: 3000}
         } else return{duration: 0, timeOut: 0}
     }
 }
@@ -49,7 +75,6 @@ export const encounterSliderTap  = (poundX, targetX, targetWidth) => {
             else {
                 return {value: 10, text: 'ok', color: 'gold'}
             }
-
         }
     }
 }
@@ -96,12 +121,14 @@ export const encounterRollForCatch = (poke, reducer, ball) => {
         const a = (hp*4 - hpCurrent)*rate*ballMulti
         const calculatedRate = Math.floor(a/(hp*2))
         const shakes = Math.floor(Math.random() * 3) + 1
-        
-        if(calculatedRate >= maxCaptureRate){return {caught: true, shakes}}
+
+        // return {caught: true, shakes: 1}
+
+        if(calculatedRate >= maxCaptureRate){return {caught: true, shakes: 3}}
 
         const roll = Math.floor(Math.random() * maxCaptureRate) + 1
         
-        if(roll <= calculatedRate) return {caught: true, shakes}
+        if(roll <= calculatedRate) return {caught: true, shakes: 3}
         else return {caught: false, shakes}
     }
 }
@@ -127,17 +154,14 @@ export const encounterCatchOrFail = (poke, tryPokeBall, tryPokePoke, healthReduc
                         await caughtPokeAnim(tryPokeBall)
                         setTimeout(async() => {
                             dispatch(myPokemonActions.addPokemon({poke}))
-                            dispatch(encounterActions.stopEncounter())
+                            dispatch(stopEncounterInit())
                         }, 1000)
                     }
                 }
             } catch(err){
                 alert('Error during catch. Check log.', err.message)
                 console.log(err)
-
-                setTimeout(async() => {
-                    dispatch(encounterActions.stopEncounter())
-                }, 1000)
+                setTimeout(async() => dispatch(stopEncounterInit(), 1000))
             }
         }   
     }

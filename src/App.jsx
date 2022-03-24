@@ -3,10 +3,12 @@ import './css/App.css'
 import Field from './components/board-components/Field'
 import PlayerMenu from './components/playermenu-components/PlayerMenu';
 import TradeMenu from './components/trade-components/TradeMenu';
+import Loading from './components/load-components/Loading';
 import {useSelector, useDispatch} from 'react-redux'
 import authReq from './helpers/requests/auth-request';
 import { useNavigate } from 'react-router-dom';
 import { userMetaActions } from './store/index';
+import { fieldMusicToggle, titleMusicToggle } from './helpers/musicDJ';
 
 function App() {
   const navigate = useNavigate()
@@ -17,10 +19,10 @@ function App() {
   useEffect(async() => {
 
     const appInit = async() => {
-
         const authRes = await authReq()
-
         if(authRes){
+          titleMusicToggle(false)
+          fieldMusicToggle(true)
           dispatch(userMetaActions.setUserDataOnload({user: authRes}))
           setLoading(false)
         } else{
@@ -29,22 +31,25 @@ function App() {
           navigate('/login', {replace: true})
         }
     }
-
     appInit()
+
+    return () => fieldMusicToggle(false)
   }, [])
 
   if(!loading && user === false) navigate('/login')
   if(!loading && user){
     return (
       <section className="app-sec">
+        <div className="app-wrap">
         <PlayerMenu />
         <Field />
         <TradeMenu />
+        </div>
       </section>
     );
   }
 
-  else return <div>Loading...</div>
+  else return <Loading />
 }
 
 export default App;

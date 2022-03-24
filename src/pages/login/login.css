@@ -1,4 +1,180 @@
-.login-sec {
-  background: blue;
+.logreg-sec {
+  height: 100vh;
+  min-height: 750px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("../../assets/pages/page-bg.png");
+  background-size: cover;
+}
+
+.logreg-sec .pokelogo-wrap {
+  position: relative;
+  top: -125px;
+  left: -15px;
+}
+
+.logreg-sec .pokelogo-wrap .poke-logo {
+  opacity: 0;
+  -webkit-transform: scale(0.4);
+          transform: scale(0.4);
+}
+
+.logreg-sec .pokelogo-wrap .react-tag {
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.logreg-sec .pokelogo-wrap .react-tag .react-tag__img {
+  max-width: 30px;
+  margin-right: 10px;
+}
+
+.logreg-sec .pokelogo-wrap .react-tag .react-tag__txt {
+  margin: 10px 0px;
+  font-size: 14px;
+  color: #386abb;
+}
+
+.logreg-sec .logreg-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  width: 600px;
+  height: 341px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 50px;
+  position: relative;
+  opacity: 0;
+}
+
+.logreg-sec .logreg-box .logreg-title__box {
+  color: white;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 284px;
+  height: 51px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logreg-sec .logreg-box .logreg-title__box::after {
+  content: url("../../assets/pages/blue-lines.png");
+  position: relative;
+  right: 20px;
+}
+
+.logreg-sec .logreg-box .logreg-title__box h1 {
+  color: white;
+  font-size: 16px;
+  margin: 0px;
+  margin-left: 23px;
+}
+
+.logreg-sec .logreg-box .logreg-input {
+  border: none;
+  background: transparent;
+  color: white;
+  padding: 7px;
+  margin: 25px 0px;
+}
+
+.logreg-sec .logreg-box .logreg-input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.logreg-sec .logreg-box .logreg-input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.logreg-sec .logreg-box .logreg-input::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.logreg-sec .logreg-box .logreg-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.logreg-sec .login-box {
+  background-image: url("./assets/img/login-box.png");
+}
+
+.logreg-sec .login-box .logreg-input {
+  border-bottom: 2px solid #165f70;
+}
+
+.logreg-sec .login-box .logreg-title__box {
+  background-color: #165f70;
+}
+
+.logreg-sec .login-box .logreg-title__box::after {
+  content: url("../../assets/pages/blue-lines.png");
+  position: relative;
+  right: 20px;
+}
+
+.logreg-sec .reg-box {
+  background-image: url("./assets/img/register-box.png");
+}
+
+.logreg-sec .reg-box .logreg-input {
+  border-bottom: 2px solid #307149;
+  margin: 12px 0px;
+}
+
+.logreg-sec .reg-box .logreg-title__box {
+  background-color: #307149;
+}
+
+.logreg-sec .reg-box .logreg-title__box::after {
+  content: url("../../assets/pages/green-lines.png");
+  position: relative;
+  right: 20px;
+}
+
+.logreg-btn {
+  color: white;
+  background: transparent;
+  border: none;
+  margin: 0px 20px;
+  cursor: pointer;
+}
+
+.logreg-btn a {
+  color: white;
+  text-decoration: none;
 }
 /*# sourceMappingURL=login.css.map */

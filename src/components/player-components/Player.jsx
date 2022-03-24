@@ -32,12 +32,12 @@ function Player() {
     dispatch(playerMove(moveCycle, fieldSize, e.keyCode))
 }, [fieldSize, dispatch])
 
-  useEffect(() => {
+  useEffect(useCallback(() => {
     poke ?
       dispatch(playerToggleMovement(playerMoveHandler, true)) :
       dispatch(playerToggleMovement(playerMoveHandler, false))
-  }, [poke])
-
+  }, [poke]))
+  
   return (
   <div 
   className="player" 

@@ -1,3 +1,138 @@
-.login-sec {
-  background: blue;
+.logreg-sec {
+  height: 100vh;
+  min-height: 750px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/pages/page-bg.png");
+  background-size: cover;
+  .pokelogo-wrap {
+    position: relative;
+    top: -125px;
+    left: -15px;
+    .poke-logo {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+    .react-tag {
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .react-tag__img {
+        max-width: 30px;
+        margin-right: 10px;
+      }
+      .react-tag__txt {
+        margin: 10px 0px;
+        font-size: 14px;
+        color: #386abb;
+      }
+    }
+  }
+  .logreg-box {
+    display: flex;
+    flex-flow: column;
+    width: 600px;
+    height: 341px;
+    box-sizing: border-box;
+    padding: 50px;
+    position: relative;
+    opacity: 0;
+    .logreg-title__box {
+      color: white;
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 284px;
+      height: 51px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &::after {
+        content: url("../../assets/pages/blue-lines.png");
+        position: relative;
+        right: 20px;
+      }
+      h1 {
+        color: white;
+        font-size: 16px;
+        margin: 0px;
+        margin-left: 23px;
+      }
+    }
+    .logreg-input {
+      border: none;
+      background: transparent;
+      color: white;
+      padding: 7px;
+      margin: 25px 0px;
+    }
+    .logreg-input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+  .login-box {
+    background-image: url("./assets/img/login-box.png");
+    .logreg-input {
+      border-bottom: 2px solid #165f70;
+    }
+    .logreg-title__box {
+      background-color: #165f70;
+      &::after {
+        content: url("../../assets/pages/blue-lines.png");
+        position: relative;
+        right: 20px;
+      }
+    }
+  }
+  .reg-box {
+    background-image: url("./assets/img/register-box.png");
+    .logreg-input {
+      border-bottom: 2px solid #307149;
+      margin: 12px 0px;
+    }
+    .logreg-title__box {
+      background-color: #307149;
+      &::after {
+        content: url("../../assets/pages/green-lines.png");
+        position: relative;
+        right: 20px;
+      }
+    }
+  }
 }
+
+.logreg-btn {
+  color: white;
+  background: transparent;
+  border: none;
+  margin: 0px 20px;
+  cursor: pointer;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+// .toast {
+//   position: absolute;
+//   width: 400px;
+//   height: 90px;
+//   border-radius: 10px;
+//   background: #f9f9f9;
+//   transition: 0.5s ease;
+//   // left: -100%;
+//   padding: 20px;
+//   box-sizing: border-box;
+//   left: 100px;
+//   bottom: 50px;
+//   -webkit-box-shadow: 0px 0px 17px -6px rgba(0, 0, 0, 0.45);
+//   box-shadow: 0px 0px 17px -6px rgba(0, 0, 0, 0.45);
+// }
+
+// .active-toast {
+//   left: 100px;
+// }

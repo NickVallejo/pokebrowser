@@ -1,11 +1,11 @@
 import React from 'react'
 
-function TradeButton({text, method, btnRequest}) {
+function TradeButton({text, method, btnRequest, className}) {
 
     const requestHandler = () => btnRequest(method)
 
     return (
-        <button className="trade-req__btn" onClick={requestHandler}>{text}</button>
+        <button className={className} onClick={requestHandler}>{text}</button>
     )
 }
 

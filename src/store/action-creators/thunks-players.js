@@ -27,6 +27,6 @@ export const playerToggleMovement = (movePlayer, encounterStart) => {
     return (dispatch) => {
         encounterStart ? 
         document.removeEventListener("keydown", movePlayer) :
-        document.addEventListener("keydown", movePlayer)
+        document.addEventListener("keydown", movePlayer, {once: true})
     }
 }

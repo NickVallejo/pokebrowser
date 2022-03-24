@@ -5,8 +5,8 @@ function PlayerProfile() {
   const username = useSelector(state => state.usermeta.user.username)
 
   return (
-      <div className="player-profile">
-          <h3 className="player-profile__name">Trainer {username}</h3>
+      <div className="menu-tab">
+          <h3 className="menu-tab__title">Trainer {username}</h3>
       </div>
   )
 }

@@ -1,8 +1,20 @@
 import {gsap} from 'gsap'
 import { useRef } from 'react'
 import { SlowMo } from 'gsap/all'
+import audioEncounter from '../../helpers/audio-encounter'
 
 gsap.registerPlugin(SlowMo);
+
+const escapedAudio = new Audio(audioEncounter['escape'])
+const throwAudio = new Audio(audioEncounter['throwBall'])
+const dropAudio = new Audio(audioEncounter['dropBall'])
+const dropAudio2 = new Audio(audioEncounter['dropBall'])
+const caughtAudio = new Audio(audioEncounter['caught'])
+const shakeAudio1 = new Audio(audioEncounter['shakeBall'])
+const shakeAudio2 = new Audio(audioEncounter['shakeBall'])
+const shakeAudio3 = new Audio(audioEncounter['shakeBall'])
+caughtAudio.volume = 0.7
+dropAudio2.volume = 0.65
 
 const tapBounce = (target, pounder, pokeImg, color) => {
     gsap.to(target.current, {
@@ -34,7 +46,7 @@ export const encounterStartAnim = (screen) => {
     gsap.timeline()
     .to(screen.current, {
         opacity: 1,
-        repeat: 3,
+        repeat: 8,
         yoyo: true,
         duration: 0.25,
         ease: "bounce.out"
@@ -66,6 +78,10 @@ export const encounterBubbleAnim = (bubbleBox) => {
 
 export const tryPokeAnim = (tryPokeBall, tryPokePoke) => {
     return new Promise(resolve => {
+        setTimeout(() => throwAudio.play(), 425)
+        setTimeout(() => dropAudio.play(), 3200)
+        setTimeout(() => dropAudio2.play(), 3380)
+
         gsap.timeline({onComplete: resolve})
         .to(tryPokeBall.current, {
             opacity: 1,
@@ -74,7 +90,7 @@ export const tryPokeAnim = (tryPokeBall, tryPokePoke) => {
         .fromTo(tryPokeBall.current,  {
             y: -70,
             duration: 0.3,
-            x: 0,
+            x: -14.5,
             rotate: 0,
             ease: "power.in"
         },
@@ -82,7 +98,7 @@ export const tryPokeAnim = (tryPokeBall, tryPokePoke) => {
             y: 50, 
             duration: 0.4,
             opacity: 1,
-            x: 0,
+            x: -14.5,
             ease: "power.out"
         }
         ).to(tryPokeBall.current, {
@@ -97,6 +113,7 @@ export const tryPokeAnim = (tryPokeBall, tryPokePoke) => {
         })
     
         setTimeout(() => {
+            escapedAudio.play()
             gsap.timeline()
             .to(tryPokePoke.current, {
                 duration: 5,
@@ -111,8 +128,23 @@ export const tryPokeAnim = (tryPokeBall, tryPokePoke) => {
 }
 
 export const shakeBallAnim = (tryPokeBall, shakes) => {
-    console.log('SHAKEY', shakes)
     return new Promise(resolve => {
+        const shakesArray = [shakeAudio1, shakeAudio2, shakeAudio3]
+        let counter = 1;
+
+        setTimeout(() => {
+            shakesArray[0].play()
+            const shakeAudioInt = setInterval(() => {
+                console.log(counter, shakes)
+                if(counter > shakes-1){
+                    clearInterval(shakeAudioInt)
+                    return
+                }
+                shakesArray[counter].play()
+                counter++
+            }, 2400)
+        }, 1200)
+
         setTimeout(() => {
             gsap.timeline({repeat: shakes-1, onComplete: resolve})
             .fromTo(tryPokeBall.current, {
@@ -133,6 +165,7 @@ export const shakeBallAnim = (tryPokeBall, shakes) => {
 
 export const caughtPokeAnim = (tryPokeBall) => {
     return new Promise(resolve => {
+        caughtAudio.play()
         gsap.timeline({onComplete: resolve})
         .to(tryPokeBall.current, {
             yoyo: true,
@@ -145,6 +178,7 @@ export const caughtPokeAnim = (tryPokeBall) => {
 
 export const escapedPokemonAnim = (tryPokeBall, tryPokePoke) => {
     return new Promise(resolve => {
+        escapedAudio.play()
         gsap.timeline({onComplete: resolve})
         .to(tryPokeBall.current, {
             scale: 1.5,

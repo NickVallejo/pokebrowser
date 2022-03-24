@@ -7,8 +7,8 @@ import PlayerLogout from './PlayerLogout';
 function PlayerMenu() {
   return (
   <section className="player-menu">
-      <div className="player-stats">
       <PlayerProfile />
+      <div className="player-stats">
       <PlayerLogout />
       <PlayerInventory />
       </div>

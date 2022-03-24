@@ -45,20 +45,28 @@ function TraderBox({user, me, socket, index, traders}) {
   return (
     <div className="trader-box__section" name={index+1}>
       <div className="trader-box">
-        <h3>{user.user}</h3>
-        <div className="acc-dec">
-          <div className={`accept trade-btn ${user.response === true && "accept-on"}`} onClick={acceptOffer}><img src={accept} /></div>
-          <div className={`reject trade-btn ${user.response === false && "reject-on"}`} onClick={rejectOffer}><img src={reject} /></div>
+        <div className="menu-tab">
+          <h3 className="trader-box__title">{user.user}</h3>
         </div>
-        <button className="leave"><Link to={me && "/app"}>Leave</Link></button>
-        <div className="player-pokemon">
-          {user.pokemon.map(poke => (
-            <MyPokemon key={poke.id} poke={poke} offerPoke={offerPoke} theOffer={poke.id===user.offer.id}/>
-          ))}
+
+        <div className="trader-box__details">
+          <div className="acc-dec">
+            <div className={`accept pkb-btn trade-btn ${user.response === true && "accept-on"}`} onClick={acceptOffer}><i class="fa-solid fa-check fa-3x"></i></div>
+            <div className={`reject pkb-btn trade-btn ${user.response === false && "reject-on"}`} onClick={rejectOffer}><i class="fa-solid fa-xmark fa-3x"></i></div>
+          </div>
+          <button className="leave pkb-btn sec"><Link to={me && "/app"}>Leave Room</Link></button>
+        </div>
+
+        <div className="trader-pokemon">
+          <div className="pokemon-list">
+            {user.pokemon.map(poke => (
+              <MyPokemon key={poke.id} poke={poke} offerPoke={offerPoke} theOffer={poke.id===user.offer.id}/>
+            ))}
+          </div>
         </div>
       </div>
       <div className="trader-field">
-        {user.offer && <MyPokemon key={user.offer.id} revokePoke={revokePoke} poke={user.offer} onField={true}/>}
+        {user.offer && <MyPokemon key={user.offer.id} me={me} revokePoke={revokePoke} poke={user.offer} onField={true}/>}
       </div>
     </div>
   )

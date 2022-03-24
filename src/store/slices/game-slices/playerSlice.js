@@ -33,8 +33,12 @@ const playerSlice = createSlice({
                         state.array.x += 1
                     }
                 }
-              }
+            }
         },
+        cleanupPlayerLocation(state, action){
+            state.field = initState.field
+            state.array = initState.array
+        }
     }
 })
 
