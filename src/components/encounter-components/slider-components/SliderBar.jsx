@@ -1,10 +1,12 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import { encounterSliderPlay, encounterSliderStop } from '../../../store/action-creators/thunks-encounters';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import tapAudio from '../../../helpers/audio-tap'
 
 function SliderBar({captureRate, fieldQuicktime, taps, healthReducer, slider, target, pounder}) {
     const dispatch = useDispatch()
+
+    const small = useSelector(state => state.ui.small)
     const [intervalSwingId, setIntervalSwingId] = useState()
     const [firstRender, setFirstRender] = useState(true)
     const [audioTaps, setAudioTaps] = useState({
@@ -25,7 +27,7 @@ function SliderBar({captureRate, fieldQuicktime, taps, healthReducer, slider, ta
       }, [])
 
     return (
-    <div ref={slider} className="enc-slider" style={{maxWidth: '1150px'}}>
+    <div ref={slider} className="enc-slider" style={{maxWidth: small ? '900px' : '1150px' }}>
         <div ref={target} className="enc-target"></div>
         <div ref={pounder} style={{width: '120px', height: '120px'}} className="enc-pounder"></div>
     </div>

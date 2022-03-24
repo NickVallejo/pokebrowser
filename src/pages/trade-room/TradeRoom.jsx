@@ -16,7 +16,6 @@ function TradeRoom() {
     const [host, setHost] = useState()
     const [searchParams, setSearchParams] = useSearchParams();
 
-
     useEffect(() => {
         const roomRequest = async() => {
             try{

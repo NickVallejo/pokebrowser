@@ -82,7 +82,8 @@ export const encounterSliderTap  = (poundX, targetX, targetWidth) => {
 export const encounterSliderPlay = (pounder, slider, cr, passUpTap) => {
     return (dispatch) => {
         const maxWidth = parseInt(slider.current.style.maxWidth) 
-        let swingCalc = Math.floor((255-cr)/6)
+        const viewportSpeedReducer = maxWidth === 1150 ? 1 : 0.78
+        let swingCalc = Math.floor((255-cr)/6) * viewportSpeedReducer
         let speedX = swingCalc < 10 ? 10 : swingCalc
         let posX = 0;
     

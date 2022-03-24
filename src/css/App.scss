@@ -13,6 +13,7 @@
 body {
   background-size: cover;
   margin: 0px;
+  min-width: 950px;
 }
 
 a {
@@ -22,12 +23,22 @@ a {
 
 .app-sec {
   display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   background-image: url("../assets/pages/page-bg.png");
   background-size: cover;
   background-position: center;
+  .app-header {
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
   .app-wrap {
     max-width: 1840px;
     margin: 0 auto;
@@ -285,6 +296,7 @@ a {
   .player-menu,
   .trade-menu {
     border: 8px solid #f9f9f9;
+    transition: 0.5s ease;
   }
 
   .player-menu {
@@ -345,15 +357,23 @@ a {
 .menu-tab {
   width: 100%;
   height: 50px;
-  // background-color: #dddddd;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0px 25px;
   box-sizing: border-box;
   overflow: hidden;
   .menu-tab__title {
     font-size: 16px;
     color: #333333;
+  }
+  .src-icon {
+    width: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
 
@@ -677,15 +697,6 @@ div {
   }
 }
 
-@media (max-width: 1450px) {
-  .app-sec {
-    .trade-menu,
-    .player-menu {
-      width: 250px;
-    }
-  }
-}
-
 .toast {
   position: absolute;
   min-width: 400px;
@@ -709,4 +720,70 @@ div {
 
 .active-toast {
   left: 100px;
+}
+
+@media (max-width: 1450px) {
+  .app-sec {
+    .trade-menu,
+    .player-menu {
+      width: 250px;
+      .player-stats {
+        padding: 10px;
+      }
+      .menu-tab {
+        padding: 0px 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .app-sec {
+    .app-wrap {
+      justify-content: flex-end;
+      .player-menu,
+      .trade-menu {
+        order: 1;
+        width: 300px;
+        position: absolute;
+        left: -100%;
+        .player-stats {
+          padding: 15px 25px;
+        }
+        .menu-tab {
+          padding: 0px 25px;
+        }
+      }
+      .menu-show {
+        left: 3%;
+      }
+    }
+    .enc-screen {
+      .enc-engage {
+        .enc-slider {
+          max-width: 900px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .app-sec {
+    .app-wrap {
+      justify-content: flex-end;
+      .player-menu,
+      .trade-menu {
+        order: 1;
+        width: 250px;
+        position: absolute;
+        .player-stats {
+          padding: 10px;
+        }
+        .menu-tab {
+          padding: 0px 10px;
+        }
+      }
+    }
+  }
 }

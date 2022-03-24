@@ -7,8 +7,9 @@ import Loading from './components/load-components/Loading';
 import {useSelector, useDispatch} from 'react-redux'
 import authReq from './helpers/requests/auth-request';
 import { useNavigate } from 'react-router-dom';
-import { userMetaActions } from './store/index';
-import { fieldMusicToggle, titleMusicToggle } from './helpers/musicDJ';
+import { fieldMusicToggle } from './helpers/musicDJ';
+import { bootAppDependencies } from './store/action-creators/thunks-ui';
+import Header from './components/board-components/Header';
 
 function App() {
   const navigate = useNavigate()
@@ -17,22 +18,16 @@ function App() {
   const user = useSelector(state => state.usermeta.user)
 
   useEffect(async() => {
-
     const appInit = async() => {
         const authRes = await authReq()
         if(authRes){
-          titleMusicToggle(false)
-          fieldMusicToggle(true)
-          dispatch(userMetaActions.setUserDataOnload({user: authRes}))
-          setLoading(false)
+          setLoading(dispatch(bootAppDependencies(authRes)))
         } else{
-          console.log('ERROR THROWN ON EXPIRY')
           document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
           navigate('/login', {replace: true})
         }
     }
     appInit()
-
     return () => fieldMusicToggle(false)
   }, [])
 
@@ -40,6 +35,7 @@ function App() {
   if(!loading && user){
     return (
       <section className="app-sec">
+        <Header />
         <div className="app-wrap">
         <PlayerMenu />
         <Field />

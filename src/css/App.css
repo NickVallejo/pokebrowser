@@ -12,6 +12,7 @@
 body {
   background-size: cover;
   margin: 0px;
+  min-width: 950px;
 }
 
 a {
@@ -23,6 +24,10 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -33,6 +38,20 @@ a {
   background-image: url("../assets/pages/page-bg.png");
   background-size: cover;
   background-position: center;
+}
+
+.app-sec .app-header {
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .app-sec .app-wrap {
@@ -371,6 +390,8 @@ a {
 .app-sec .player-menu,
 .app-sec .trade-menu {
   border: 8px solid #f9f9f9;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
 .app-sec .player-menu {
@@ -447,6 +468,9 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 0px 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -456,6 +480,17 @@ a {
 .menu-tab .menu-tab__title {
   font-size: 16px;
   color: #333333;
+}
+
+.menu-tab .src-icon {
+  width: 20px;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.menu-tab .src-icon:hover {
+  opacity: 0.7;
 }
 
 .trade-menu {
@@ -844,13 +879,6 @@ div::-webkit-scrollbar-thumb {
   margin-bottom: 0px;
 }
 
-@media (max-width: 1450px) {
-  .app-sec .trade-menu,
-  .app-sec .player-menu {
-    width: 250px;
-  }
-}
-
 .toast {
   position: absolute;
   min-width: 400px;
@@ -881,5 +909,75 @@ div::-webkit-scrollbar-thumb {
 
 .active-toast {
   left: 100px;
+}
+
+@media (max-width: 1450px) {
+  .app-sec .trade-menu,
+  .app-sec .player-menu {
+    width: 250px;
+  }
+  .app-sec .trade-menu .player-stats,
+  .app-sec .player-menu .player-stats {
+    padding: 10px;
+  }
+  .app-sec .trade-menu .menu-tab,
+  .app-sec .player-menu .menu-tab {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .app-sec .app-wrap {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .app-sec .app-wrap .player-menu,
+  .app-sec .app-wrap .trade-menu {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    width: 300px;
+    position: absolute;
+    left: -100%;
+  }
+  .app-sec .app-wrap .player-menu .player-stats,
+  .app-sec .app-wrap .trade-menu .player-stats {
+    padding: 15px 25px;
+  }
+  .app-sec .app-wrap .player-menu .menu-tab,
+  .app-sec .app-wrap .trade-menu .menu-tab {
+    padding: 0px 25px;
+  }
+  .app-sec .app-wrap .menu-show {
+    left: 3%;
+  }
+  .app-sec .enc-screen .enc-engage .enc-slider {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .app-sec .app-wrap {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .app-sec .app-wrap .player-menu,
+  .app-sec .app-wrap .trade-menu {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    width: 250px;
+    position: absolute;
+  }
+  .app-sec .app-wrap .player-menu .player-stats,
+  .app-sec .app-wrap .trade-menu .player-stats {
+    padding: 10px;
+  }
+  .app-sec .app-wrap .player-menu .menu-tab,
+  .app-sec .app-wrap .trade-menu .menu-tab {
+    padding: 0px 10px;
+  }
 }
 /*# sourceMappingURL=App.css.map */

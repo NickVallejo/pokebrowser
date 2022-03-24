@@ -7,6 +7,7 @@ import inventory from './slices/game-slices/inventorySlice'
 import encounter from './slices/game-slices/encounterSlice'
 import mypokemon from './slices/game-slices/myPokemonSlice'
 import usermeta from './slices/game-slices/metaSlice'
+import ui from './slices/game-slices/uiSlice'
 
 //trade slices
 import trades from './slices/trade-slices/tradeSlice'
@@ -20,6 +21,7 @@ const store = configureStore({
         mypokemon: mypokemon.reducer,
         trades: trades.reducer,
         usermeta: usermeta.reducer,
+        ui: ui.reducer
     }
 })
 
@@ -30,5 +32,6 @@ export const encounterActions = encounter.actions
 export const myPokemonActions = mypokemon.actions
 export const tradeActions = trades.actions
 export const userMetaActions = usermeta.actions
+export const uiActions = ui.actions
 
 export default store

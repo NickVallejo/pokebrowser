@@ -1,13 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import TradeUser from './TradeUser'
 import TradeResults from './TradeResults'
 import { tradeActions } from '../../store'
 import playerSrcReq from '../../helpers/requests/playerSrc-request'
+import src from '../../assets/img/src.svg'
+import TradeHeader from './TradeHeader'
 
 function TradeMenu() {
     const srcRef = useRef()
     const srcResults = useSelector(state => state.trades.srcResults)
+    const small = useSelector(state => state.ui.small)
+    const windowOn = useSelector(state => state.ui.window)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -22,10 +25,8 @@ function TradeMenu() {
     }
 
   return (
-    <section className="trade-menu">
-      <div className="menu-tab">
-          <h3 className="menu-tab__title">Find Trades</h3>
-      </div>
+    <section className={`trade-menu ${windowOn === 'trademenu' && 'menu-show'}`}>
+      <TradeHeader />
       <div className="player-src">
         <input ref={srcRef} onKeyDown={submitSearchHandler} type="text" placeholder="Searh for Players..." />
       </div>
