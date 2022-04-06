@@ -14,7 +14,7 @@ function EncounterSlider({target, pounder, slider, pokeImg}) {
 
   //taps the slider and increases recorded taps by 1 (max 3)
   const fieldQuicktime = useCallback(e => {
-    if(e.code === "ArrowUp"){
+    if(e.code === "Space"){
         const poundX = pounder.current.getBoundingClientRect().x
         const targetX = target.current.getBoundingClientRect().x
         const targetWidth = target.current.getBoundingClientRect().width
@@ -50,6 +50,7 @@ function EncounterSlider({target, pounder, slider, pokeImg}) {
       target={target}
       pounder={pounder}
       />
+      <h4 className="info-txt">Press Spacebar to tap!</h4>
     </section>
   )
 }

@@ -3,6 +3,7 @@ import { inventoryActions, encounterActions, myPokemonActions } from ".."
 import savePokeReq from "../../helpers/requests/savePoke-request"
 import { encounterMusicToggle, fieldMusicToggle } from "../../helpers/musicDJ"
 import audioEncounter from "../../helpers/audio-encounter"
+import ballReq from "../../helpers/requests/ball-request"
 
 const runAudio = new Audio(audioEncounter['run'])
 const alert = new Audio(audioEncounter['alert'])
@@ -19,7 +20,7 @@ export const stopEncounterInit = (run=false) => {
 export const startEncounterInit = (pkmn) => {
     return async(dispatch) => {
         fieldMusicToggle(false)
-        alert.play()
+        setTimeout(() => alert.play(), 150)
         setTimeout(() => encounterMusicToggle(true), 1000)
         dispatch(encounterActions.startEncounter({pkmn}))
     }
@@ -138,6 +139,7 @@ export const encounterCatchOrFail = (poke, tryPokeBall, tryPokePoke, healthReduc
     return async(dispatch) => {
             try{
                 dispatch(inventoryActions.removePokeball())
+                await ballReq(false)
                 const catchRoll = dispatch(encounterRollForCatch(poke, healthReducer, ball))
     
                 await tryPokeAnim(tryPokeBall, tryPokePoke)

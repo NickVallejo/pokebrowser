@@ -11,6 +11,7 @@ function Player() {
   const playerFieldPosition = useSelector(state => state.player.field)
   const fieldSize = useSelector(state => state.field.size)
   const poke = useSelector(state => state.encounter.encPoke)
+  const show = useSelector(state => state.ui.showTut)
   const [playerImg, setPlayerImg] = useState(plM.down[0])
   const frames = [1, 0, 2, 0]
 
@@ -33,11 +34,13 @@ function Player() {
 }, [fieldSize, dispatch])
 
   useEffect(useCallback(() => {
-    poke ?
-      dispatch(playerToggleMovement(playerMoveHandler, true)) :
+    if(poke || show){
+      dispatch(playerToggleMovement(playerMoveHandler, true))
+    } else{
       dispatch(playerToggleMovement(playerMoveHandler, false))
-  }, [poke]))
-  
+    }
+  }, [poke, show]))
+
   return (
   <div 
   className="player" 

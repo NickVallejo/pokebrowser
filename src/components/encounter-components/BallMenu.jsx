@@ -22,6 +22,7 @@ function BallMenu({playerInv}) {
     
     return (
     <div className="ball-menu">
+        <div className="balls">
         <div className="ball">
             <h3>1</h3>
             <img src={pokeball} alt="" />
@@ -37,6 +38,9 @@ function BallMenu({playerInv}) {
             <img src={ultraball} alt="" />
             <span>0x</span>
         </div>
+        </div>
+        <h4 className="info-txt">Press numbers 1, 2, or 3 to select a ball!</h4>
+
     </div>
     )
 }

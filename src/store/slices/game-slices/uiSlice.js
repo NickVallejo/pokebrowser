@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initState = {small: undefined, window: 'playermenu'}
+const initState = {small: undefined, window: 'playermenu', showTut: false}
 
 const uiSlice = createSlice({
     name: 'ui',
@@ -11,6 +11,9 @@ const uiSlice = createSlice({
         },
         switchMenu(state, action){
             state.window = action.payload
+        },
+        toggleTut(state, action){
+            state.showTut = action.payload
         }
     }
 })

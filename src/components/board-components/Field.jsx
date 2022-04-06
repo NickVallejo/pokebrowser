@@ -13,6 +13,7 @@ function Field() {
   const fieldSize = useSelector(state => state.field.size)
   const pokeballPositions = useSelector(state => state.field.pokeballPositions)
   const poke = useSelector(state => state.encounter.encPoke)
+  let pokeballInterval
 
   const pokeballSpawner = () => {
     const pokeballRoll = Math.floor(Math.random() * 6) + 1
@@ -42,11 +43,15 @@ function Field() {
   }, [playerArrayPosition])
 
   useEffect(() => {
-    const pokeballInterval = setInterval(pokeballSpawner, 2000)
+    pokeballInterval = setInterval(pokeballSpawner, 2000)
 
     if(poke) clearInterval(pokeballInterval)
     return () => clearInterval(pokeballInterval)
   }, [poke])
+
+  useEffect(() => {
+    return () => clearInterval(pokeballInterval)
+  })
 
   useEffect(() => () => dispatch(playerActions.cleanupPlayerLocation()), [])
 

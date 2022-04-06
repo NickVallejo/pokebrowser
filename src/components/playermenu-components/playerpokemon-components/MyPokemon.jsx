@@ -1,10 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import MyPokemonStats from './MyPokemonStats';
 import MyPokemonInfo from './MyPokemonInfo';
+import PokemonLevelsIcon from './PokemonLevelsIcon';
 
-function MyPokemon({poke, flee}) {
+function MyPokemon({poke, id, flee, statPoke, pickStatPoke}) {
+
+  const toggleLevels = () => pickStatPoke(id)
+
   return (
     <div className='pokemon-card'>
+        <PokemonLevelsIcon toggleLevels={toggleLevels} iconClicked={statPoke === id}/>
         <MyPokemonInfo 
             flee={flee}
             id={poke.id} 
@@ -12,7 +17,7 @@ function MyPokemon({poke, flee}) {
             name={poke.name} 
             src={poke.sprite.front}
         />
-        <MyPokemonStats stats={poke.stats}/>
+        {statPoke === id && <MyPokemonStats stats={poke.stats}/>}
     </div>
   )
 }

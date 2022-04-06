@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import patchBg from '../../assets/patch.png';
 import {useDispatch} from 'react-redux'
 import { byeItem } from '../../store/action-creators/animations-items';
@@ -12,6 +12,14 @@ const pickupAudio = new Audio(audioField['pickup'])
 function Patch({fieldSize, pokeballPatch, playerPatch, row, col}) {
   const dispatch = useDispatch()
   const [fizzle, setFizzle] = useState(false)
+  const [justLogged, setJustLogged] = useState(true)
+
+  const fizzleSetter = () => setFizzle(true)
+
+  useEffect(() => {
+    setJustLogged(false)
+    return () => clearTimeout(fizzleSetter)
+  }, [])
 
   //if fizzle is triggered, delete item and add item to inv if player ate it
   useEffect(() => {
@@ -23,12 +31,12 @@ function Patch({fieldSize, pokeballPatch, playerPatch, row, col}) {
 
   //if item on patch: set fizzle timer, if player & item: player eats item
   useEffect(() => {
-    if(playerPatch && !pokeballPatch) {
+    if(playerPatch && !pokeballPatch && !justLogged) {
       const pkmn = dispatch(rollEncounter())
       if(pkmn) dispatch(startEncounterInit(pkmn))
     }
-    else if(pokeballPatch && !playerPatch) {setTimeout(() => setFizzle(true), 10000)}
-    else if(playerPatch && pokeballPatch) {
+    else if(pokeballPatch && !playerPatch) {setTimeout(fizzleSetter, 10000)}
+    else if(playerPatch && pokeballPatch && !justLogged) {
       pickupAudio.play()
       setFizzle(true)
     }
@@ -40,7 +48,7 @@ function Patch({fieldSize, pokeballPatch, playerPatch, row, col}) {
     height: `calc((100%/${fieldSize}) - 10px)`
     }}>
     {pokeballPatch && <img src={pokeball} className={`pkball fizzle-${fizzle}`} />}
-  </div>;
+  </div>
 }
 
 export default Patch;

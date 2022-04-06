@@ -44,7 +44,7 @@ function EncounterMenu({poke, playerInv, retry}) {
       <div className="enc-menu__bad">
         {pokes.length >= max && <p className="enc-menu__noengage">You have no more space to hold pokemon!</p>}
         {playerInv.balls.pkballs <= 0 && <p className="enc-menu__noengage">You have no pokeballs!</p>}
-        <button className="enc-menu__run" onClick={runEncounter}>Run!</button>
+        <button className="enc-menu__run pkb-btn ter" onClick={runEncounter}>Run!</button>
       </div>
     </div>
 </div>

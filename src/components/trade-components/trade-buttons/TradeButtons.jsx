@@ -74,7 +74,7 @@ if(!loading){
     else if(buttonState === 'acceptor-pending'){
         return(
             <div className="trade-user__btns">
-                <TradeButton className="pkb-btn prim" prim text="Accept Trade" method="PUT" btnRequest={tradeRequestHandler} />
+                <TradeButton className="pkb-btn sec" prim text="Accept Trade" method="PUT" btnRequest={tradeRequestHandler} />
                 <TradeButton className="pkb-btn ter" text="Reject Trade" method="DELETE" btnRequest={tradeRequestHandler} />
             </div>
         )

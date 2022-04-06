@@ -62,7 +62,6 @@ function TradeRoomActive({roomId, enteredUser, host}) {
     }, [])
 
     useEffect(() => {
-        console.log('TRADERS AFTER PROCESS', traders)
         if(traders.length === 2 && traders[0].response === true && traders[1].response === true){
             setTradeConfirm(true)
         } else{

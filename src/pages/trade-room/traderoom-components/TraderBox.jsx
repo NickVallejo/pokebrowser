@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import MyPokemon from './traderpokemon-components/MyPokemon'
-import accept from '../../../assets/img/trades/accept.svg'
-import reject from '../../../assets/img/trades/reject.svg'
 import { Link } from 'react-router-dom'
 
 function TraderBox({user, me, socket, index, traders}) {
@@ -22,7 +20,6 @@ function TraderBox({user, me, socket, index, traders}) {
   useEffect(() => {
     if(me && traders[0] && traders[1]){
       const trader = traders.find(trader => trader.id !== user.id)
-      console.log('CHECKING FOR RESPONSE PRIVS', traders)
       if(trader && trader.offer){
         setRespond(true)
       } else{
@@ -51,10 +48,10 @@ function TraderBox({user, me, socket, index, traders}) {
 
         <div className="trader-box__details">
           <div className="acc-dec">
-            <div className={`accept pkb-btn trade-btn ${user.response === true && "accept-on"}`} onClick={acceptOffer}><i class="fa-solid fa-check fa-3x"></i></div>
-            <div className={`reject pkb-btn trade-btn ${user.response === false && "reject-on"}`} onClick={rejectOffer}><i class="fa-solid fa-xmark fa-3x"></i></div>
+            <div className={`accept ${me && 'trade-hovers'} pkb-btn prim trade-btn ${user.response === true && "accept-on"} ${!respond && me && "no-respond"}`} onClick={acceptOffer}><i className="fa-solid fa-check fa-3x"></i></div>
+            <div className={`reject ${me && 'trade-hovers'} pkb-btn ter trade-btn ${user.response === false && "reject-on"} ${!respond && me && "no-respond"}`} onClick={rejectOffer}><i className="fa-solid fa-xmark fa-3x"></i></div>
           </div>
-          <button className="leave pkb-btn sec"><Link to={me && "/app"}>Leave Room</Link></button>
+          {me && <button className="leave pkb-btn sec"><Link to={me && "/app"}>Leave Room</Link></button>}
         </div>
 
         <div className="trader-pokemon">

@@ -28,7 +28,10 @@ function Register() {
     console.log('PING')
       if(user && pass && confirm){
           const registerResponse = await submitRegister(user, pass, confirm)
-          if(registerResponse.success) navigate('/app', {replace: true})
+          if(registerResponse.success) {
+            sessionStorage.setItem('new', true)
+            navigate('/app', {replace: true})
+          }
           else setPopToast({msg: registerResponse.data, good: false})
     } 
     else setPopToast({msg: 'Please Fill all fields.', good: false})

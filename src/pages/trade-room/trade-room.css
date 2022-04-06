@@ -48,7 +48,8 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   overflow: hidden;
-  background-color: #f9f9f9;
+  background-color: white;
+  border: 8px solid #f9f9f9;
 }
 
 .trader-boxes .trader-box__section .trader-box .trader-box__title {
@@ -93,38 +94,53 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 7px;
   margin-bottom: 20px;
-  cursor: pointer;
+  pointer-events: none;
+  background: none;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .trade-btn::after, .trader-boxes .trader-box__section .trader-box .acc-dec .trade-btn::before {
+  background-color: transparent;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .trade-btn:hover {
+  background-color: transparent;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .trade-btn:hover::before, .trader-boxes .trader-box__section .trader-box .acc-dec .trade-btn:hover::after {
+  background-color: transparent;
 }
 
 .trader-boxes .trader-box__section .trader-box .acc-dec .trade-btn a {
   text-decoration: none;
 }
 
-.trader-boxes .trader-box__section .trader-box .acc-dec .trade-btn:hover {
-  -webkit-transform: scale(0.98);
-          transform: scale(0.98);
-}
-
-.trader-boxes .trader-box__section .trader-box .acc-dec .trade-btn i {
-  color: white;
-}
-
-.trader-boxes .trader-box__section .trader-box .acc-dec .accept {
-  border: 4px solid #1eae68;
-}
-
 .trader-boxes .trader-box__section .trader-box .acc-dec .accept i {
   color: #1eae68;
 }
 
-.trader-boxes .trader-box__section .trader-box .acc-dec .reject {
-  border: 4px solid #a11717;
-}
-
 .trader-boxes .trader-box__section .trader-box .acc-dec .reject i {
   color: #a11717;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .trade-hovers {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .trade-hovers:hover {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .no-respond {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.trader-boxes .trader-box__section .trader-box .acc-dec .no-respond:hover {
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 .trader-boxes .trader-box__section .trader-box .acc-dec .accept-on {
@@ -290,6 +306,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 999;
 }
 
 .trade-confirm__overlay .trade-confirm__box {
@@ -297,6 +314,9 @@
   border-radius: 15px;
   padding: 30px;
   text-align: center;
+  border: 8px solid #f9f9f9;
+  -webkit-box-shadow: 0px 0px 25px -6px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 25px -6px rgba(0, 0, 0, 0.8);
 }
 
 .trade-confirm__overlay .trade-confirm__box .trade-confirm__review {

@@ -6,7 +6,7 @@ function PlayerBubble() {
   const bubbleBox = useRef()
   
   useEffect(() =>  {
-      encounterBubbleAnim(bubbleBox,)
+    setTimeout(() => encounterBubbleAnim(bubbleBox), 150)   
   }, [])
 
   return <img ref={bubbleBox} className="player-bubble" src={bubble} alt="" />;

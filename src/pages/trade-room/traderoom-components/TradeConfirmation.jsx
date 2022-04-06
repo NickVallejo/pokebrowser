@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import processTradeReq from '../../../helpers/requests/tradeProcess-request'
+import audioField from '../../../helpers/audio-field'
+const confirmAudio = new Audio(audioField['pokePc'])
 
 function TradeConfirmation({userId, traders, socket, host}) {
-    
     const navigate = useNavigate()
     const confirmTrade = () => socket.emit('confirm-trade')
     const abortTrade = () => socket.emit('abort-trade')
-
-    useEffect(() => {
-        console.log('TRDAERS ON CONFIRMATIN MOUNT', traders)
-    })
 
     useEffect(async() => {
         if(traders.length === 2 && traders[0].confirmed && traders[1].confirmed){
@@ -25,7 +22,9 @@ function TradeConfirmation({userId, traders, socket, host}) {
                         pokeId: traders[1].offer.id
                     }
                 })
+
                 if(tradeRes.success) socket.emit('trade-processed', (data) => {
+                    confirmAudio.play()
                     if(!data.success){
                         alert('Something went wrong! Disbanding room...')
                         navigate('/app', {replace: true})

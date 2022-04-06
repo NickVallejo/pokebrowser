@@ -10,7 +10,7 @@ import NotFound from './components/load-components/NotFound'
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/" element={<Navigate to="/register" replace />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/app" element={<AppWrap />} />
