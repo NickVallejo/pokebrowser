@@ -3,10 +3,10 @@ import '../login/login.css'
 import { useNavigate, Link } from 'react-router-dom'
 import authReq from '../../helpers/requests/auth-request'
 import submitRegister from '../../helpers/requests/register-request'
-import Loading from '../../components/load-components/Loading'
 import Toast from '../../components/board-components/Toast'
 import Logo from './components/Logo'
 import RegisterBox from './components/RegisterBox'
+import httpReq from '../../helpers/requests/use-http'
 
 function Register() {
 
@@ -24,10 +24,16 @@ function Register() {
     setUser(await authReq())
   }, [])
 
-  const submitRegisterInit = async(user, pass, confirm) => {
+  const submitRegisterInit = async(username, password, confirm) => {
     console.log('PING')
-      if(user && pass && confirm){
-          const registerResponse = await submitRegister(user, pass, confirm)
+      if(username && password && confirm){
+          // const registerResponse = await submitRegister(user, pass, confirm)
+          const registerResponse = await httpReq('http://localhost:4000/api/auth/register', 'POST', {
+            'Content-Type': 'application/json', 
+            'Accept': 'application/json',
+            'Access-Control-Allow-Credentials': 'true',
+          }, {username, password, confirm})
+          
           if(registerResponse.success) {
             sessionStorage.setItem('new', true)
             navigate('/app', {replace: true})

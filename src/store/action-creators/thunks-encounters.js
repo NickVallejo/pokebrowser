@@ -4,6 +4,7 @@ import savePokeReq from "../../helpers/requests/savePoke-request"
 import { encounterMusicToggle, fieldMusicToggle } from "../../helpers/musicDJ"
 import audioEncounter from "../../helpers/audio-encounter"
 import ballReq from "../../helpers/requests/ball-request"
+import httpReq from "../../helpers/requests/use-http"
 
 const runAudio = new Audio(audioEncounter['run'])
 const alert = new Audio(audioEncounter['alert'])
@@ -151,7 +152,11 @@ export const encounterCatchOrFail = (poke, tryPokeBall, tryPokePoke, healthReduc
                     await escapedPokemonAnim(tryPokeBall, tryPokePoke)
                     setTimeout(() => {dispatch(encounterActions.retryCatch())}, 1000)
                 } else{
-                    const saveRes = await savePokeReq(poke)
+                    // const saveRes = await savePokeReq(poke)
+                    const saveRes = await httpReq('http://localhost:4000/api/players/add-poke', 'POST', {
+                        'Content-Type': 'application/json', 
+                        'Access-Control-Allow-Credentials': 'true',
+                    }, poke)
                     if(saveRes.success){
                         dispatch(encounterActions.setCatchText({caught: 'true', text: "You caught it!"}))
                         await caughtPokeAnim(tryPokeBall)

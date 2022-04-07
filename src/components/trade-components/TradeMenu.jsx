@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import TradeResults from './TradeResults'
 import { tradeActions } from '../../store'
 import playerSrcReq from '../../helpers/requests/playerSrc-request'
-import src from '../../assets/img/src.svg'
 import TradeHeader from './TradeHeader'
 import TradeSearchRefresh from './TradeSearchRefresh'
+import httpReq from '../../helpers/requests/use-http'
 
 function TradeMenu() {
     const srcRef = useRef()
@@ -19,9 +19,12 @@ function TradeMenu() {
     }, [])
 
     const submitSearchHandler = async(e, refresh=false) => {
-      console.log('IN HERE', refresh)
-        if((e.keyCode == 13 && srcRef.current.value.length > 0) || (refresh && srcRef.current.value.length > 0)){
-            const playerSrcRes = await playerSrcReq(srcRef.current.value)
+        const src = srcRef.current.value
+        if((e.keyCode == 13 && src.length > 0) || (refresh && src.length > 0)){
+            // const playerSrcRes = await playerSrcReq(srcRef.current.value)
+            const playerSrcRes = await httpReq(`http://localhost:4000/api/players?src=${src}`, 'GET', {
+              'Content-Type': 'application/x-www-form-urlencoded', 
+          })
             dispatch(tradeActions.tradeResultsSearch({results: playerSrcRes.data}))
         }
     }

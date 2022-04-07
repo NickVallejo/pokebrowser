@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import Patch from './Patch';
 import Player from '../player-components/Player';
 import Encounter from '../encounter-components/Encounter';
@@ -16,7 +16,7 @@ function Field() {
   let pokeballInterval
 
   const pokeballSpawner = () => {
-    const pokeballRoll = Math.floor(Math.random() * 6) + 1
+    const pokeballRoll = Math.floor(Math.random() * 5) + 1
     if(pokeballRoll === 1){
       const pokeballPatchX = Math.floor(Math.random() * fieldSize)
       const pokeballPatchY = Math.floor(Math.random() * fieldSize)
@@ -25,6 +25,7 @@ function Field() {
   }
 
   const checkIfPokeballPatch = (row, col)  => {
+    console.log('checking for pokeball patch')
     if(
       Object.keys(pokeballPositions).length > 0 && 
       row.toString()+col.toString() in pokeballPositions){
@@ -43,17 +44,16 @@ function Field() {
   }, [playerArrayPosition])
 
   useEffect(() => {
-    pokeballInterval = setInterval(pokeballSpawner, 2000)
-
     if(poke) clearInterval(pokeballInterval)
-    return () => clearInterval(pokeballInterval)
   }, [poke])
 
   useEffect(() => {
-    return () => clearInterval(pokeballInterval)
-  })
-
-  useEffect(() => () => dispatch(playerActions.cleanupPlayerLocation()), [])
+    pokeballInterval = setInterval(pokeballSpawner, 2000)
+    return () => {
+      clearInterval(pokeballInterval)
+      dispatch(playerActions.cleanupPlayerLocation())
+    }
+  }, [])
 
   return <div className="field" style={{width: `${fieldSize}00px`, height:  `${fieldSize}00px`}}>
     <Player/>

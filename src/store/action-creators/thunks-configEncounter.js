@@ -84,11 +84,11 @@ const generateEncounter = (array)  =>  {
 
 export const rollEncounter = () => {
     return (dispatch) => {
-        const encounterRoll = Math.floor(Math.random() * 20) + 1
+        const encounterRoll = Math.floor(Math.random() * 15) + 1
         if(encounterRoll === 1){
             const pokeTableRoll = Math.floor(Math.random() * 1000) + 1
             switch(true){
-                case pokeTableRoll > 100:
+                case pokeTableRoll > 250:
                     return generateEncounter('firstEvos')
                 case pokeTableRoll > 50:
                     return generateEncounter('secondEvos')
