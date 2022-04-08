@@ -17,7 +17,7 @@ function Header() {
   return (
     <header className="app-header">
         <img className="sound-icon icon" src={soundOn ? onIcon : offIcon} alt="" onClick={toggleSound} />
-        <a href="https://github.com/NickVallejo"><img className="git-icon icon" src={github} alt="" /></a>
+        <a className="git-icon" href="https://github.com/NickVallejo"><img className="icon" src={github} alt="" /></a>
     </header>
   )
 }

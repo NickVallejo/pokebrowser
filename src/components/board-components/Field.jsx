@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useRef, useEffect, useCallback} from 'react';
 import Patch from './Patch';
 import Player from '../player-components/Player';
 import Encounter from '../encounter-components/Encounter';
@@ -13,19 +13,18 @@ function Field() {
   const fieldSize = useSelector(state => state.field.size)
   const pokeballPositions = useSelector(state => state.field.pokeballPositions)
   const poke = useSelector(state => state.encounter.encPoke)
-  let pokeballInterval
+  const pokeballInterval = useRef()
 
-  const pokeballSpawner = () => {
+  const pokeballSpawner = useCallback(() => {
     const pokeballRoll = Math.floor(Math.random() * 5) + 1
     if(pokeballRoll === 1){
       const pokeballPatchX = Math.floor(Math.random() * fieldSize)
       const pokeballPatchY = Math.floor(Math.random() * fieldSize)
       dispatch(fieldActions.newPokeballPosition({x: pokeballPatchX, y: pokeballPatchY}))
     }
-  }
+  })
 
   const checkIfPokeballPatch = (row, col)  => {
-    console.log('checking for pokeball patch')
     if(
       Object.keys(pokeballPositions).length > 0 && 
       row.toString()+col.toString() in pokeballPositions){
@@ -44,13 +43,19 @@ function Field() {
   }, [playerArrayPosition])
 
   useEffect(() => {
-    if(poke) clearInterval(pokeballInterval)
+    if(poke) {
+      clearInterval(pokeballInterval.current)
+      pokeballInterval.current = null
+    }
+    else if(!pokeballInterval.current) {
+      pokeballInterval.current = setInterval(pokeballSpawner, 2000)
+    }
   }, [poke])
 
   useEffect(() => {
-    pokeballInterval = setInterval(pokeballSpawner, 2000)
     return () => {
-      clearInterval(pokeballInterval)
+      clearInterval(pokeballInterval.current)
+      pokeballInterval.current = null
       dispatch(playerActions.cleanupPlayerLocation())
     }
   }, [])
